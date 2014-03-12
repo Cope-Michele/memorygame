@@ -12,16 +12,6 @@ import java.util.Scanner;
  *
  * @author KenandEva
  */
-/* this class controls the game, update and draws it on the screen*/
-
-// I changed the class name to onePlayer, we can move back later.
-// When paying with one player users will compete with the time.
-// the Game will set for 100 seconds
-// The game is a win if time: t<50
-// The game is a ties if time : 50<t<100
-// The game is a lose if time : t>100
-
-// Eva's individual assignment lesson 3
 public class PlayerView implements Serializable{
     
     public String[] playerNameList = new String[2];

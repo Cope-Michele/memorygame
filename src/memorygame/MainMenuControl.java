@@ -28,7 +28,7 @@ public class MainMenuControl {
         Memorygame.setPlayerList(playerList);
         
     }
-    
+    /*
     public void startGame(long noPlayers) {
                 
         if (noPlayers != 1  &&  noPlayers != 2) {
@@ -37,17 +37,15 @@ public class MainMenuControl {
         }
         
         Game game;
-        if (noPlayers == 1) {
+        if ((noPlayers == 1)||(noPlayers==2)) {
          new OptionsMenuView().getInput();
             //game = this.createGame(Game.ONE_PLAYER_GAME);
         }
         else {
-            game = this.createGame(Game.TWO_PLAYER_GAME);
+           // game = this.createGame(Game.TWO_PLAYER_GAME);
         }
 
-     /*   GameMenuView gameMenu = new GameMenuView(game);
-        gameMenu.getInput();*/
-    }
+      }
     
         private Game createGame(String gameType) {
         Game game = null;
@@ -93,19 +91,14 @@ public class MainMenuControl {
 
         return Game.PLAYING;
     }
+    */
     
-   //displays other menu's
     public void displayHelpMenu() {
         HelpMenuView helpMenuView = new HelpMenuView();
         helpMenuView.getInput();
     }
     
-   /* public void displayOptionsMenu() {
-        OptionsMenuView optionsMenuView = new OptionsMenuView();
-        optionsMenuView.getInput();
-    }
-    */
-    
+     
     public void displayStatistics(){
         Player player = new Player();
         player.getTotalPoints();

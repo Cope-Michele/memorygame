@@ -9,11 +9,11 @@ package memorygame;
  * @author Eva
  */
 
-public class HelpMenuControl {
+public class HelpMenuControl {// this class has tight cohesion
     // Constructor 
     public HelpMenuControl(){
         
-    }
+    } 
  
     public void displayGameObjective(){
         System.out.println();

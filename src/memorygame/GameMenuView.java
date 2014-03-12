@@ -12,11 +12,11 @@ import java.util.Scanner;
  *
  * @author michelewhite
  */
-public class GameMenuView {
+public class GameMenuView {// do we need this class? when is this class appear?
     
     private Game game;
     private MainMenuControl mainMenuControl ;
-
+    private MainMenuView mainMenuView = new MainMenuView();
     private final static String[][] menuItems = {
         {"T","Take your turn"},
         {"D", "Display the board"},
@@ -52,7 +52,7 @@ public class GameMenuView {
                     this.game.printCells();
                     break;
                 case "N":
-                    this.mainMenuControl.startGame(1);
+                    this.mainMenuView.getInput();
                     break;
                 case "H":
                     this.mainMenuControl.displayHelpMenu();

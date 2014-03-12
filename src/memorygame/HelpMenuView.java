@@ -33,7 +33,7 @@ public class HelpMenuView  {
     public void getInput() {       
               
         String userCommand;
-        Scanner inFile = new Scanner(System.in);
+        Scanner inFile=Memorygame.getInputFile();
         
         do {
             

@@ -12,54 +12,48 @@ import java.util.Scanner;
 // first appears to the screen
 // this is what you see when first open the program
 // the main menu will have: Easy, Normal, and hard option
-public class MainMenuView {  
-    // create frame for the window,
-    // I use static final because those varibale will never gonna change 
-    
-    public static final int width=320;// can be changed 
-    
-    public static final int height= width/12*9;
-    
-    public static final int scale = 2;
-    
+public class MainMenuView {  //this class has a tight cohesion
+       
     private static final String[][] menuItems = {
         {"N", "Enter player names"},
-        {"1", "One player game"},
-        {"2", "Two player game"},
+        {"M", "Game Menu options"},
+       // {"2", "Two player game"},
         {"H", "Help"},
         {"S", "Display Statistics"},
         {"X", "Exit Memory Game"},
     }; 
     
-    // instance of main menu
-    MainMenuControl mainMenuControl=new MainMenuControl();
-   
-    // construtor
+     MainMenuControl mainMenuControl=new MainMenuControl();
+     OptionsMenuView optionMenuView= new OptionsMenuView();
+   OptionsMenuControl optionsMenuControl= new OptionsMenuControl();
+  
     public MainMenuView(){  
     
     }
    
-    // get user input
-    public void getInput(){
+     public void getInput(){
         String command;
         Scanner inFile=new Scanner(System.in);
         do {
-            this.display();//display the menu 
+            this.display();           
            
-            // get command entered
             command= inFile.nextLine();
             command=command.trim().toUpperCase();
          
             switch (command) {
                 case "N":
                     this.mainMenuControl.createPlayerList();
+                    
                     break;
-                case "1":
-                    this.mainMenuControl.startGame(1);
+                case "M":
+                   this.optionMenuView.getInput();
+                    break;
+    /*         case "1":
+                   this.mainMenuControl.startGame(1);
                     break;
                 case "2":
                     this.mainMenuControl.startGame(2);
-                    break;
+                    break;*/
                 case "H":
                     this.mainMenuControl.displayHelpMenu();
                     break;
@@ -67,7 +61,7 @@ public class MainMenuView {
                     this.mainMenuControl.displayStatistics();
                     break;
                 case "X":
-                    this.mainMenuControl.quitGame();
+                    this.optionsMenuControl.quitGame();
                     break;
                  
                 default: 

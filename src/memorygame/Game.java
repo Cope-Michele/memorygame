@@ -61,7 +61,7 @@ public class Game implements Serializable {
         shuffle();
         setCells ();
         printCells();
-        playGame();
+       // playGame();
     }
     
     public Game(String gameType) {
