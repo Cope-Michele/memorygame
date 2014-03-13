@@ -26,7 +26,7 @@ import java.util.Scanner;
         
         Game game; // this command could use Switch I don't know how to do it
         if ((noPlayers == 1&& gameLevel==1)) {
-        game = this.createGame(Game.ONE_PLAYER_GAME);
+        game = this.createGame(Game.ONE_PLAYER_GAME);// this is just a prototype
         }
         else if (noPlayers==1&& gameLevel==2){
             System.out.println("Game One PLayer Level 2");
@@ -40,7 +40,7 @@ import java.util.Scanner;
          
         // fro two player Game  
         else if (noPlayers==2&& gameLevel==1){
-             game = this.createGame(Game.TWO_PLAYER_GAME);;
+             game = this.createGame(Game.TWO_PLAYER_GAME);// this is just a prototype
             }
          else if (noPlayers==2&& gameLevel==2){
             System.out.println("Game Two PLayer Level 2");
