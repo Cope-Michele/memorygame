@@ -12,7 +12,7 @@ import java.util.Scanner;
 // first appears to the screen
 // this is what you see when first open the program
 // the main menu will have: Easy, Normal, and hard option
-public class MainMenuView {  //this class has a tight cohesion
+public class MainMenuView extends Menu {  //this class has a tight cohesion
        
     private static final String[][] menuItems = {
         {"N", "Enter player names"},
@@ -25,58 +25,53 @@ public class MainMenuView {  //this class has a tight cohesion
     
      MainMenuControl mainMenuControl=new MainMenuControl();
      OptionsMenuView optionMenuView= new OptionsMenuView();
-   OptionsMenuControl optionsMenuControl= new OptionsMenuControl();
-  
-    public MainMenuView(){  
-    
-    }
    
-     public void getInput(){
-        String command;
-        Scanner inFile=new Scanner(System.in);
-        do {
+  
+    public MainMenuView(){ 
+        
+        super(MainMenuView.menuItems);
+    }
+ 
+
+    @Override
+  
+       
+    public String executeCommands(Object object) {
+       
+          String gameStatus = Game.PLAYING;
+   
+          do {
             this.display();           
            
-            command= inFile.nextLine();
-            command=command.trim().toUpperCase();
-         
+            String command = this.getCommand();
             switch (command) {
                 case "N":
                     this.mainMenuControl.createPlayerList();
                     
                     break;
                 case "M":
-                   this.optionMenuView.getInput();
+                   this.optionMenuView.display();
                     break;
                 case "H":
-                    this.mainMenuControl.displayHelpMenu();
+                    HelpMenuView helpMenu = Memorygame.getHelpMenu();
+                    helpMenu.executeCommands(null);
                     break;
                 case "S":
                     this.mainMenuControl.displayStatistics();
                     break;
                 case "X":
-                    this.optionsMenuControl.quitGame();
-                    break;
+                    return Game.EXIT;
                  
-                default: 
-                    new MemoryGameError().displayError("Invalid command. Please enter a valid command.");
-                continue;                    
+                                
             }
-        } while (!command.equals("X"));
+      } while (!gameStatus.equals(Game.EXIT));
 
-        return;
+        return Game.EXIT;
     }
+
     
-    public final void display() {
-        System.out.println("\n\t______________________________________________________________________");
-        System.out.println("\n\tEnter the letter associated with one of the following commands:");
-
-        for (int i = 0; i < MainMenuView.menuItems.length; i++) {
-            System.out.println("\n\t   " + menuItems[i][0] + "\t" + menuItems[i][1]);
-        }
-        System.out.println("\n\t______________________________________________________________________");
     }
-}
+ 
         
        
    

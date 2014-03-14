@@ -52,10 +52,11 @@ public class GameMenuView {// do we need this class? when is this class appear?
                     this.game.printCells();
                     break;
                 case "N":
-                    this.mainMenuView.getInput();
+                    this.mainMenuView.display();
                     break;
                 case "H":
-                    this.mainMenuControl.displayHelpMenu();
+                    HelpMenuView helpMenu = Memorygame.getHelpMenu();
+                    helpMenu.executeCommands(null);
                     break;
                 case "Q":                   
                     break;

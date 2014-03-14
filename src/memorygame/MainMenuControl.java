@@ -29,12 +29,7 @@ public class MainMenuControl {
         
     }
       
-    public void displayHelpMenu() {
-        HelpMenuView helpMenuView = new HelpMenuView();
-        helpMenuView.getInput();
-    }
-    
-     
+   
     public void displayStatistics(){
         Player player = new Player();
         player.getTotalPoints();
