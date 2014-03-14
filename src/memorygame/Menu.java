@@ -59,7 +59,8 @@ public abstract class Menu {
 
     protected final String getCommand() {
 
-        Scanner inFile = Memorygame.getInputFile();
+       // Scanner inFile = Memorygame.getInputFile();
+         Scanner inFile = new Scanner(System.in);
         String command;
         boolean valid = false;
         do {
@@ -68,7 +69,7 @@ public abstract class Menu {
             valid = validCommand(command);
             if (!validCommand(command)) {
                new MemoryGameError().displayError("Invalid command. Please enter a valid command.");
-                continue;
+                //continue;
             }
                 
         } while (!valid);
