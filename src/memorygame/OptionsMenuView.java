@@ -16,8 +16,9 @@ public class OptionsMenuView extends Menu {
      
        {"1","One Player"},
         {"2","Two Player"},
-        {"Q","Quit Options Menu"},
+        {"X","Quit Options Menu"},
     };
+    LevelMenuView levelmenu= new LevelMenuView();
     
     
     public OptionsMenuView() {
@@ -35,11 +36,14 @@ public class OptionsMenuView extends Menu {
             String command = this.getCommand();
             switch (command) {
 
-                case "1":case "2":
-                   LevelMenuView levelMenu = Memorygame.getLevelpMenu();
-                    levelMenu.executeCommands(null);
+                case "1":
+                System.out.println("dfsdfs");
+                case "2":
+                    this.levelmenu.display();
+                   //LevelMenuView levelMenu = Memorygame.getLevelpMenu();
+                    //levelMenu.executeCommands(null);
                    break;
-                 case "X":
+                 case "X":case"x":
                     return Game.EXIT;
                  
                                 

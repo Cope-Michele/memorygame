@@ -14,6 +14,8 @@ public class Memorygame {
     private static final Scanner inFile = new Scanner(System.in);
     private static final HelpMenuView helpMenu = new HelpMenuView();
     private static final LevelMenuView levelMenu = new LevelMenuView();
+    private static final OptionsMenuView optionMenu = new OptionsMenuView();
+    
     private static Player[] playerList;
     String name;
     private final static String instructions = "\n\t______________________________________________________________________"
@@ -32,6 +34,9 @@ public class Memorygame {
     }
      public static LevelMenuView getLevelpMenu() {
         return Memorygame.levelMenu;
+    }
+      public static OptionsMenuView getOptionMenu() {
+        return Memorygame.optionMenu;
     }
      
                  

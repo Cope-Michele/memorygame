@@ -45,21 +45,23 @@ public class MainMenuView extends Menu {  //this class has a tight cohesion
            
             String command = this.getCommand();
             switch (command) {
-                case "N":
+                case "N": case "n":
                     this.mainMenuControl.createPlayerList();
                     
                     break;
-                case "M":
-                   this.optionMenuView.display();
+                case "M":case "m":
+                    OptionsMenuView optionMenu = Memorygame.getOptionMenu();
+                   optionMenu.executeCommands(null);
+                   //this.optionMenuView.display();
                     break;
-                case "H":
+                case "H":case"h":
                     HelpMenuView helpMenu = Memorygame.getHelpMenu();
                     helpMenu.executeCommands(null);
                     break;
-                case "S":
+                case "S": case"s":
                     this.mainMenuControl.displayStatistics();
                     break;
-                case "X":
+                case "X":case"x":
                     return Game.EXIT;
                  
                                 
