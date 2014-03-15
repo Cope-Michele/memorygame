@@ -84,7 +84,7 @@ public class OptionsMenuView extends Menu {
             new MemoryGameError().displayError("startGame - invalid number of players specified.");
             return;
         }
-        
+        //COMMENT/////////////////////////////////////////////
          // The game should not be calling from here to create a tight cohesion.
         //I think Game class should call here and get the "noPlayers" and "gameLevel" parameters
         // to set the right board for each game 
