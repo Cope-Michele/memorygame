@@ -13,18 +13,18 @@ import java.util.Scanner;
 // this is what you see when first open the program
 // the main menu will have: Easy, Normal, and hard option
 public class MainMenuView extends Menu {  //this class has a tight cohesion
-       
+    private String command;
+    
     private static final String[][] menuItems = {
         {"N", "Enter player names"},
         {"M", "Game Menu options"},
-       // {"2", "Two player game"},
         {"H", "Help"},
         {"S", "Display Statistics"},
         {"X", "Exit Memory Game"},
     }; 
     
      MainMenuControl mainMenuControl=new MainMenuControl();
-     OptionsMenuView optionMenuView= new OptionsMenuView();
+    // OptionsMenuView optionMenuView= new OptionsMenuView();
    
   
     public MainMenuView(){ 
@@ -50,9 +50,21 @@ public class MainMenuView extends Menu {  //this class has a tight cohesion
                     
                     break;
                 case "M":case "m":
-                    OptionsMenuView optionMenu = Memorygame.getOptionMenu();
-                   optionMenu.executeCommands(null);
-                   //this.optionMenuView.display();
+                    // get number of players
+                    OptionsMenuView optionMenu = new OptionsMenuView();
+                    optionMenu.setWhatToDo("Player");
+                    optionMenu.executeCommands(null);
+
+                    // get the level
+                    optionMenu.setWhatToDo("Level");
+                    optionMenu.executeCommands(null);
+       
+                    // play the game. (Need to move this to the Game class)
+                    optionMenu.startGame(optionMenu.getNumbPlayers(), optionMenu.getNumbLevel());
+       
+                    //OptionsMenuView optionMenu = Memorygame.getOptionMenu();
+                    //optionMenu.executeCommands(null);
+                    /*this.optionMenuView.getCommand();*/
                     break;
                 case "H":case"h":
                     HelpMenuView helpMenu = Memorygame.getHelpMenu();
@@ -71,8 +83,13 @@ public class MainMenuView extends Menu {  //this class has a tight cohesion
         return Game.EXIT;
     }
 
-    
+    public void setCommand(String cmd){
+        this.command = cmd;
     }
+    public String setCommand(){
+        return this.command;
+    }
+}
  
         
        
