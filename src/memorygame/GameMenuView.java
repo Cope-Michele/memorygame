@@ -12,7 +12,7 @@ import java.util.Scanner;
  *
  * @author michelewhite
  */
-public class GameMenuView {// do we need this class? when is this class appear?
+public class GameMenuView  extends Menu {// do we need this class? when is this class appear?
     
     private Game game;
     private MainMenuControl mainMenuControl ;
@@ -71,14 +71,9 @@ public class GameMenuView {// do we need this class? when is this class appear?
     
 
 
-    public final void display() {
-        System.out.println("\n\t______________________________________________________________________");
-        System.out.println("\tEnter the letter associated with one of the following commands:");
-
-        for (int i = 0; i < GameMenuView.menuItems.length; i++) {
-            System.out.println("\t   " + menuItems[i][0] + "\t" + menuItems[i][1]);
-        }
-        System.out.println("\n\t______________________________________________________________________");
+    @Override
+    public String executeCommands(Object object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
   
 }
