@@ -13,7 +13,7 @@ import java.lang.reflect.Array;
  * @author michelewhite
  */
 
-public class CardDeck implements Serializable{
+public class CardDeck extends CardView implements Serializable{
     
     private Array cards;
     private int numberOfCards = 30;
@@ -45,5 +45,19 @@ public class CardDeck implements Serializable{
      */
     public void setNumberOfCards(int numberOfCards) {
         this.numberOfCards = numberOfCards;
+    }
+    
+    //not sure if this function will need to be created or if it is covered in another function.
+    public void boardSize(){
+  
+    int easy [][];
+    easy = new int[3][3];//board that holds 9 cards
+    
+    int medium[][];
+    medium= new int [3][4];//board that holds 12 cards
+    
+    int large [][];
+    large= new int [4][4];//board that holds 16 cards
+    
     }
 }

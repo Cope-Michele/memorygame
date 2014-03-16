@@ -10,13 +10,15 @@ import java.io.Serializable;
  */
 
 public class CardView implements Serializable{
+    
     public boolean matched; // tells whether or not a card is matched
     public String back; // the hiden symbol at the back of the card
-    
     private boolean showing;// true or false if the hidden card is showing
     private int front; //The font of the card 
     //private String symbol;
-  
+    public CardView() {
+        
+    }
     // constractor 
     public CardView(String theBack, int theFront) {
         showing = false; // showing refers to the back of the cards matching symbol

@@ -1,7 +1,3 @@
-/*
- * This class is done!
- */
-
 package memorygame;
 
 import java.util.Scanner;
