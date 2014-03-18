@@ -55,7 +55,7 @@ public class Game implements Serializable {
     public Game(){ //start game
         randomCard = new Random();
         getInput = new Scanner(System.in);
-        board = new CardView[6][6];
+        board = new CardView[4][4];
         playerA = new Player();
         playerB = new Player();
         shuffle();
@@ -213,23 +213,23 @@ public class Game implements Serializable {
         int row1, col1, row2, col2;
         System.out.println();
         System.out.println("Enter the number on the card.");
+        System.out.print("\n");
         System.out.print("First Card Choice?>");
         cardChoice1 =getInputAsInt();
         gameMove++; //
-        row1=cardChoice1/6;
-        col1=cardChoice1%6;
+        row1=cardChoice1/4;
+        col1=cardChoice1%4;
         board[row1][col1].setShowingStatus();
-        System.out.print("Second CardView Choice?>");
         System.out.print("\n");
+        System.out.print("Second CardView Choice?>");
         cardChoice2 =getInputAsInt();
-        row2=cardChoice2/6 ;
-        col2=cardChoice2%6;
+        row2=cardChoice2/4 ;
+        col2=cardChoice2%4;
         board[row2][col2].setShowingStatus();
-       
         System.out.print('\u000C'); // Clear the screen
         printCells();
         matchedCards(row1, col1, row2, col2);
-        
+        endGame();
     }
     
         // check the card to see if the "cards" match
@@ -246,6 +246,17 @@ public class Game implements Serializable {
             board[row1][col1].setShowingStatus();
             board[row2][col2].setShowingStatus();
             playGame();
+   }
+    
+   public void endGame() {
+       for (int row=0; row<board.length;row++){
+           for (int col=0; col<board[0].length;col++){
+               {
+               board[row][col].matched = true;
+               System.out.println("You Won!");
+               }
+           }
+       }
    }
    
    public void setCells (){
@@ -287,5 +298,37 @@ public class Game implements Serializable {
 
     public String getInputAsString(){
         return getInput.nextLine();
-    } 
+    }
+    
+    public void getLevel(int noPlayers,int gameLevel){
+        if (noPlayers == 1){
+        if(gameLevel==1){
+            System.out.println(" One PLayer Level 1");
+                choosePairOfCards();// just a prototype needed to be created still
+                }
+            else if(gameLevel==2){
+                System.out.println(" One PLayer Level 2");
+                    choosePairOfCards();// just a prototype needed to be created still
+                    }
+            else if (gameLevel==3){
+                System.out.println(" One PLayer Level 3");
+                    choosePairOfCards(); // just a prototype needed to be created still   
+                    }      
+                }
+        else {
+            if(gameLevel==1){
+                System.out.println(" Two PLayer Level 1");
+                choosePairOfCards();// just a prototype needed to be created still
+                }
+            else if(gameLevel==2){
+                 System.out.println(" Two PLayer Level 2");
+                 choosePairOfCards();// just a prototype needed to be created still
+                              }
+             else if (gameLevel==3){
+                 System.out.println(" Two PLayer Level 3");
+                 choosePairOfCards();// just a prototype needed to be created still
+                              }
+        
+             }
+    }
 }

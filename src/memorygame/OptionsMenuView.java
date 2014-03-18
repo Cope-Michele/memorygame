@@ -46,7 +46,7 @@ public class OptionsMenuView extends Menu {
                         this.setNumbLevel(2);
                         break;
                      case "3":
-                       //this.setNumbLevel(3);
+                        this.setNumbLevel(3);
                          break;
                      case "X":
                          return Game.EXIT;
@@ -86,38 +86,36 @@ public class OptionsMenuView extends Menu {
         // to set the right board for each game 
        
         
-        if (noPlayers == 1){
-            if(gameLevel==1){
-                System.out.println(" One PLayer Level 1");
-               
-               game.choosePairOfCards();// just a prototype needed to be created still
-                             }
-             else if(gameLevel==2){
-                 System.out.println(" One PLayer Level 2");
-                game.choosePairOfCards();// just a prototype needed to be created still
-                              }
-             else if (gameLevel==3){
-                 System.out.println(" One PLayer Level 3");
-               game.choosePairOfCards(); // just a prototype needed to be created still   
-                                    }
-                    
-                   
-            }
-        else {
-             if(gameLevel==1){
-                System.out.println(" Two PLayer Level 1");
-               game.choosePairOfCards();// just a prototype needed to be created still
-                             }
-             else if(gameLevel==2){
-                 System.out.println(" Two PLayer Level 2");
-                  game.choosePairOfCards();// just a prototype needed to be created still
-                              }
-             else if (gameLevel==3){
-                 System.out.println(" Two PLayer Level 3");
-                  game.choosePairOfCards();// just a prototype needed to be created still
-                              }
-        
-             }
+//        if (noPlayers == 1){
+//            if(gameLevel==1){
+//                System.out.println(" One PLayer Level 1");
+//               
+//                game.choosePairOfCards();// just a prototype needed to be created still
+//                }
+//             else if(gameLevel==2){
+//                 System.out.println(" One PLayer Level 2");
+//                    game.choosePairOfCards();// just a prototype needed to be created still
+//                    }
+//             else if (gameLevel==3){
+//                System.out.println(" One PLayer Level 3");
+//                    game.choosePairOfCards(); // just a prototype needed to be created still   
+//                    }      
+//                }
+//        else {
+//             if(gameLevel==1){
+//                System.out.println(" Two PLayer Level 1");
+//                game.choosePairOfCards();// just a prototype needed to be created still
+//                }
+//             else if(gameLevel==2){
+//                 System.out.println(" Two PLayer Level 2");
+//                  game.choosePairOfCards();// just a prototype needed to be created still
+//                              }
+//             else if (gameLevel==3){
+//                 System.out.println(" Two PLayer Level 3");
+//                  game.choosePairOfCards();// just a prototype needed to be created still
+//                              }
+//        
+//             }
         
     }
 

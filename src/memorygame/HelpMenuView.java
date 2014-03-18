@@ -50,9 +50,9 @@ public class HelpMenuView extends Menu  {
                      this.displayHelp(HelpMenuView.PLAYER_TWO);
                     break;                   
                 case "Q": 
-                     return Game.QUIT;
+                     return Game.EXIT;
                }
-        } while (!gameStatus.equals(Game.QUIT));  
+        } while (!gameStatus.equals(Game.EXIT));  
         
          return gameStatus;
     }
