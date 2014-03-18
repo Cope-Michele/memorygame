@@ -24,56 +24,50 @@ public class GameMenuView  extends Menu {// do we need this class? when is this 
         {"H", "Help"},
         {"Q", "QUIT"}
     };
-
+public GameMenuView(){
+super(GameMenuView.menuItems);
+}
     public GameMenuView(Game game) {
         this.game = game;
         this.mainMenuControl = new MainMenuControl();
     }
 
     
-    
-    public void getInput() {
-   
-        String command;
-        Scanner inFile = new Scanner(System.in);
-
-        do {    
-            this.display(); // display the menu
-
-            // get commaned entered
-            command = inFile.nextLine();
-            command = command.trim().toUpperCase();
-            
-            switch (command) {
-                case "T":
-                    this.game.choosePairOfCards();
-                    break;
-                case "D":
-                    this.game.printCells();
-                    break;
-                case "N":
-                    this.mainMenuView.display();
-                    break;
-                case "H":
-                    HelpMenuView helpMenu = Memorygame.getHelpMenu();
-                    helpMenu.executeCommands(null);
-                    break;
-                case "Q":                   
-                    break;
-                default: 
-                    new MemoryGameError().displayError("Invalid command. Please enter a valid command.");
-                    continue;                              
-            }
-        } while (!command.equals("Q"));
-
-        return;
-    }
-    
 
 
     @Override
     public String executeCommands(Object object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String gameStatus = Game.PLAYING;
+    
+    
+        do {    
+            this.display(); // display the menu
+
+              String command = this.getCommand();
+            switch (command) {
+                case "T":case"t":
+                    this.game.choosePairOfCards();
+                    break;
+                case "D":case"d":
+                    this.game.printCells();
+                    break;
+                case "N":case"n":
+                    this.mainMenuView.display();
+                    break;
+                case "H":case"h":
+                     
+                    HelpMenuView helpMenu = Memorygame.getHelpMenu();
+                    helpMenu.executeCommands(null);
+                    break;
+                case "X": case"x":                  
+                   return Game.EXIT;
+                 
+                                
+            }
+      } while (!gameStatus.equals(Game.EXIT));
+        
+
+           return Game.EXIT;
     }
   
 }
