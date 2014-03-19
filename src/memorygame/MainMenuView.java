@@ -17,7 +17,7 @@ public class MainMenuView extends Menu {  //this class has a tight cohesion
     
     private static final String[][] menuItems = {
         {"N", "Enter player names"},
-        {"M", "Game Menu options"},
+        {"G", "Game Menu options"},
         {"H", "Help"},
         {"S", "Display Statistics"},
         {"X", "Exit Memory Game"},
@@ -51,7 +51,7 @@ public class MainMenuView extends Menu {  //this class has a tight cohesion
                     
                     
                     break;
-                case "M":case "m":
+                case "G":case "m":
                     // get number of players
                     OptionsMenuView optionMenu = new OptionsMenuView();
                     optionMenu.setWhatToDo("Player");

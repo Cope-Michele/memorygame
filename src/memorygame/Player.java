@@ -137,7 +137,7 @@ public class Player implements Serializable {
     }
         
         //Michele's Week 6 individual Assignment (collects and totals a players points)
-    public void getTotalPoints() {    
+public void getTotalPoints() {    
         int points[] = {100, 115, 89, 60, 77, 26, 115};
         int sum = 0;
         for(int p : points) {
