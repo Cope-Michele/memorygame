@@ -31,7 +31,7 @@ public class OptionsMenuView extends Menu {
     
     @Override
     public String executeCommands(Object object) {
-        String gameStatus = Game.PLAYING;
+        //String gameStatus = Game.PLAYING;
         
         if (this.whatToDo.equalsIgnoreCase("Level")){
             
@@ -73,6 +73,7 @@ public class OptionsMenuView extends Menu {
     }
     
     
+    /*
     public void startGame(int noPlayers,int gameLevel)
     {
          Game game=new Game();        
@@ -121,7 +122,7 @@ public class OptionsMenuView extends Menu {
         
     }
 
-              /*
+              
                 
 
      

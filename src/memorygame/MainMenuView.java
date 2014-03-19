@@ -25,6 +25,7 @@ public class MainMenuView extends Menu {  //this class has a tight cohesion
     
      MainMenuControl mainMenuControl=new MainMenuControl();
     // OptionsMenuView optionMenuView= new OptionsMenuView();
+      
    
   
     public MainMenuView(){ 
@@ -48,6 +49,7 @@ public class MainMenuView extends Menu {  //this class has a tight cohesion
                 case "N": case "n":
                     this.mainMenuControl.createPlayerList();
                     
+                    
                     break;
                 case "M":case "m":
                     // get number of players
@@ -60,7 +62,10 @@ public class MainMenuView extends Menu {  //this class has a tight cohesion
                     optionMenu.executeCommands(null);
        
                     // play the game. (Need to move this to the Game class)
-                    optionMenu.startGame(optionMenu.getNumbPlayers(), optionMenu.getNumbLevel());
+                   // optionMenu.startGame(optionMenu.getNumbPlayers(), optionMenu.getNumbLevel());
+                   Game game = new Game();
+                    game.startGame(optionMenu.getNumbPlayers(), optionMenu.getNumbLevel());
+                    
        
                     //OptionsMenuView optionMenu = Memorygame.getOptionMenu();
                     //optionMenu.executeCommands(null);

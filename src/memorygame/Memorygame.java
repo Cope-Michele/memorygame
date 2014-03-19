@@ -48,7 +48,7 @@ public class Memorygame {
         MainMenuView mainMenu = new MainMenuView();
         mainMenu.executeCommands(null);
         
-        /*
+        
         // get number of players
         OptionsMenuView optionMenu = new OptionsMenuView();
         optionMenu.setWhatToDo("Player");
@@ -59,8 +59,8 @@ public class Memorygame {
        optionMenu.executeCommands(null);
        
        // play the game. (Need to move this to the Game class)
-       optionMenu.startGame(optionMenu.getNumbPlayers(), optionMenu.getNumbLevel());
-        */
+       //optionMenu.startGame(optionMenu.getNumbPlayers(), optionMenu.getNumbLevel());
+        
                 
         Memorygame.inFile.close();
     }
