@@ -80,17 +80,21 @@ public class Game implements Serializable {
         }
       
        
-        
+             
         if (noPlayers == 1){
             if(gameLevel==1){
+                // size of the array [3][3]
+               
                 System.out.println(" One PLayer Level 1");
                
                              }
              else if(gameLevel==2){
+                 // size of the array [4][4]
                  System.out.println(" One PLayer Level 2");
              
                               }
              else if (gameLevel==3){
+                 // size of the array [6][6]
                  System.out.println(" One PLayer Level 3");
                
                                     }
@@ -99,47 +103,29 @@ public class Game implements Serializable {
             }
         else {
              if(gameLevel==1){
+                  // size of the array [3][3]
+                 // players takes turns
                 System.out.println(" Two PLayer Level 1");
                game.choosePairOfCards();// just a prototype needed to be created still
                              }
              else if(gameLevel==2){
+                 // size of the array [4][4]
+                 // players takes turns
                  System.out.println(" Two PLayer Level 2");
                   game.choosePairOfCards();// just a prototype needed to be created still
                               }
              else if (gameLevel==3){
+                 // size of the array [6][6]
+                 // players takes turns
                  System.out.println(" Two PLayer Level 3");
                   game.choosePairOfCards();// just a prototype needed to be created still
                               }
         
              }
     }
-    
-    
-    /*public Game(){ //one player hard 
-        randomCard = new Random();
-        getInput = new Scanner(System.in);
-        board = new CardView[6][6];
-        playerA = new Player();
-        playerB = new Player();
-        shuffle();
-        setCells ();
-        printCells();
-       // playGame();
-    }
-    
-  /*  public Game(String gameType) {
-        randomCard = new Random();
-        getInput = new Scanner(System.in);
-        board = new CardView[6][6];// create game "board"
-        playerA = new Player();
-        playerB = new Player();
-        shuffle();
-        setCells ();
-        printCells();
-        playGame();
-    }*/
 
-   
+    
+    
     
     public void choosePairOfCards(){
         int row1, col1, row2, col2;
