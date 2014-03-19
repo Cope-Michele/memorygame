@@ -118,7 +118,7 @@ public class Game implements Serializable {
     /*public Game(){ //one player hard 
         randomCard = new Random();
         getInput = new Scanner(System.in);
-        board = new CardView[4][4];
+        board = new CardView[6][6];
         playerA = new Player();
         playerB = new Player();
         shuffle();
