@@ -4,6 +4,7 @@
 
 package evamichele.memorygame.control;
 
+import evamichele.memorygame.gamecreator.Game;
 import evamichele.memorygame.views.OptionsMenuView;
 import evamichele.memorygame.views.MainMenuView;
 import evamichele.memorygame.views.HelpMenuView;

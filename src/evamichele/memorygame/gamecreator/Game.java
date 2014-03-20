@@ -5,8 +5,10 @@
  * 4. We need to create a timer so that we can get statistics for our game.
  */
 
-package memorygame;
+package evamichele.memorygame.gamecreator;
 
+import evamichele.memorygame.control.MemoryGameError;
+import evamichele.memorygame.views.HelpMenuView;
 import java.lang.reflect.Array;
 import java.util.Random;
 import java.util.Scanner;
@@ -21,8 +23,8 @@ public class Game implements Serializable {
     public static final String ONE_PLAYER_GAME = "ONE_PLAYER";
     public static final String TWO_PLAYER_GAME = "TWO_PLAYER";
     public static final String EASY="EASY";
-      public static final String MEDIUM="MEDIUM";
-        public static final String HARD="HARD";
+    public static final String MEDIUM="MEDIUM";
+    public static final String HARD="HARD";
     
     
     public static final String NO_ACTIVE_GAME = "NO_GAME_STARTED";
@@ -45,14 +47,14 @@ public class Game implements Serializable {
     private HelpMenuView gameRules;
     private Array gamePlayers;
     
-    private final CardView[][]board;
+    private final Card[][]board;
     private final String[] words={"RED","RED","ORANGE","ORANGE","YELLOW","YELLOW","GREEN","GREEN","BLUE","BLUE","PURPLE","PURPLE","INDIGO","INDIGO","BLACK","BLACK","WHITE","WHITE","GRAY","GRAY","BROWN","BROWN","PINK","PINK","TURQOUISE","TURQOUISE","AQUA","AQUA","MAROON","MAROON","LIME","LIME","VIOLET","VIOLET","AMBER","AMBER"};
     private final Random randomCard;
     private final Scanner getInput;
     private int card;
     private int cardChoice1;
     private int cardChoice2;
-   private int gameMove=0;// the player move
+    private int gameMove=0;// the player move
     private boolean matched = false;
     private double startingPoints = 115.00;
     
@@ -60,73 +62,59 @@ public class Game implements Serializable {
     public Game(){ //one player hard 
         randomCard = new Random();
         getInput = new Scanner(System.in);
-        board = new CardView[4][6];
+        board = new Card[4][6];
         playerA = new Player();
-        playerB = new Player();
-            
-         shuffle();
+        playerB = new Player();    
+        shuffle();
         setCells ();
         printCells();
-       playGame();
-    }
+        playGame();
+    } 
     
-    
-     public void startGame(int noPlayers,int gameLevel)
-    {
-         Game game=new Game();        
-        if (noPlayers != 1  &&  noPlayers != 2) {
-            new MemoryGameError().displayError("startGame - invalid number of players specified.");
+    public void startGame(int noPlayers,int gameLevel){
+        Game game=new Game();        
+        if(noPlayers != 1  &&  noPlayers != 2) {
+            new MemoryGameError().display("startGame - invalid number of players specified.");
             return;
-        }
-      
-       
-             
-        if (noPlayers == 1){
+        }           
+        if(noPlayers == 1){
             if(gameLevel==1){
                 // size of the array [3][3]
-               
                 System.out.println(" One PLayer Level 1");
-               
-                             }
-             else if(gameLevel==2){
+                }
+            
+            else if(gameLevel==2){
                  // size of the array [4][4]
-                 System.out.println(" One PLayer Level 2");
-             
-                              }
-             else if (gameLevel==3){
+                 System.out.println(" One PLayer Level 2"); 
+                 }
+            
+            else if (gameLevel==3){
                  // size of the array [6][6]
-                 System.out.println(" One PLayer Level 3");
-               
-                                    }
-                    
-                   
-            }
+                 System.out.println(" One PLayer Level 3");   
+                 }       
+        }      
         else {
-             if(gameLevel==1){
-                  // size of the array [3][3]
-                 // players takes turns
+            if(gameLevel==1){
+                // size of the array [3][3]
+                // players takes turns
                 System.out.println(" Two PLayer Level 1");
-               game.choosePairOfCards();// just a prototype needed to be created still
-                             }
-             else if(gameLevel==2){
-                 // size of the array [4][4]
-                 // players takes turns
-                 System.out.println(" Two PLayer Level 2");
-                  game.choosePairOfCards();// just a prototype needed to be created still
-                              }
-             else if (gameLevel==3){
-                 // size of the array [6][6]
-                 // players takes turns
-                 System.out.println(" Two PLayer Level 3");
-                  game.choosePairOfCards();// just a prototype needed to be created still
-                              }
-        
-             }
-    }
+                game.choosePairOfCards();// just a prototype needed to be created still
+                }          
+            else if(gameLevel==2){
+                // size of the array [4][4]
+                // players takes turns
+                System.out.println(" Two PLayer Level 2");
+                game.choosePairOfCards();// just a prototype needed to be created still
+                }          
+            else if (gameLevel==3){
+                // size of the array [6][6]
+                // players takes turns
+                System.out.println(" Two PLayer Level 3");
+                game.choosePairOfCards();// just a prototype needed to be created still
+                }  
+            }
+        }   
 
-    
-    
-    
     public void choosePairOfCards(){
         int row1, col1, row2, col2;
         System.out.println();
@@ -171,7 +159,7 @@ public class Game implements Serializable {
        for (int row=0; row<board.length;row++){
            for (int col=0; col<board[0].length;col++){
                {
-               board[row][col]=new CardView (words[card],card); // create a new card object
+               board[row][col]=new Card (words[card],card); // create a new card object
                card++;
                }
            }
