@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package memorygame;
+package evamichele.memorygame.control;
 
 import java.util.Scanner;
 
@@ -68,7 +68,7 @@ public abstract class Menu {
             command = command.trim().toUpperCase();
             valid = validCommand(command);
             if (!validCommand(command)) {
-               new MemoryGameError().displayError("Invalid command. Please enter a valid command.");
+               new MemoryGameError().display("Invalid command. Please enter a valid command.");
                 //continue;
             }
                 

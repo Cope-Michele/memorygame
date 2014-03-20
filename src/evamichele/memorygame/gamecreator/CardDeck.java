@@ -4,7 +4,7 @@
 *  size of array of cards that will be used in the game.
 */
 
-package memorygame;
+package evamichele.memorygame.gamecreator;
 
 import java.io.Serializable;
 import java.lang.reflect.Array;
@@ -13,7 +13,7 @@ import java.lang.reflect.Array;
  * @author michelewhite
  */
 
-public class CardDeck extends CardView implements Serializable{
+public class CardDeck extends Card implements Serializable{
     
     private Array cards;
     private int numberOfCards = 30;

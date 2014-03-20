@@ -1,6 +1,10 @@
-package memorygame;
+package evamichele.memorygame.views;
 
 import java.util.Scanner;
+import evamichele.memorygame.gamecreator.Game;
+import evamichele.memorygame.control.MainMenuControl;
+import evamichele.memorygame.control.Memorygame;
+import evamichele.memorygame.control.Menu;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

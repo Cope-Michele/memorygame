@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 
-package memorygame;
+package evamichele.memorygame.views;
 
 import java.util.Scanner;
+import evamichele.memorygame.gamecreator.Game;
+import evamichele.memorygame.control.Menu;
 
 
 

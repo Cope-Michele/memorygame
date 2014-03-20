@@ -4,8 +4,10 @@
  * move and statistic functions that are in other classes to this class.
  */
 
-package memorygame;
+package evamichele.memorygame.gamecreator;
 
+import evamichele.memorygame.interfaces.DisplayInfo;
+import evamichele.memorygame.control.MemoryGameError;
 import java.io.Serializable;
 /**
  * @author KenandEva
@@ -15,7 +17,7 @@ import java.io.Serializable;
 
 // Eva's individual assignment lesson 3
 // Paired Programming Assignment Lesson 8
-public class Player implements Serializable {
+public class Player implements Serializable{
     
     public static final String MAIN_USER = "USER_ONE";
     public static final String SECOND_USER = "USER_TWO";
@@ -146,7 +148,7 @@ public void getTotalPoints() {
         }
             System.out.println("\n\tTotal Player Points are: " + sum);
         if(points.length < 1) {
-            new MemoryGameError().displayError("\n\t It looks like you Haven't "
+            new MemoryGameError().display("\n\t It looks like you Haven't "
             + "played yet! Play a game of Memory first to view your statistics");
         }
     }

@@ -2,8 +2,13 @@
  * This class works correctly! 
  */
 
-package memorygame;
+package evamichele.memorygame.views;
+import evamichele.memorygame.views.HelpMenuView;
 import java.util.Scanner;
+import evamichele.memorygame.gamecreator.Game;
+import evamichele.memorygame.control.MainMenuControl;
+import evamichele.memorygame.control.Memorygame;
+import evamichele.memorygame.control.Menu;
 
 /**
  * @author Eva

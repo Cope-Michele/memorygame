@@ -3,8 +3,9 @@
  * player names, ect.  I'm not sure what else this needs to do
  */
 
-package memorygame;
+package evamichele.memorygame.gamecreator;
 
+import evamichele.memorygame.control.MemoryGameError;
 import java.io.Serializable;
 import java.util.Scanner;
 
@@ -16,14 +17,14 @@ public class PlayerView implements Serializable{
     
     public String[] playerNameList = new String[2];
     private int gameMove;
-    private boolean cards;// true if cards matches, false if not.
+    //private boolean cards;// true if cards matches, false if not.
     
     public void setGameMove(int gameMove) {
         this.gameMove = gameMove;
     }
 
     public void setCards(boolean cards) {
-        this.cards = cards;
+        //this.cards = cards;
     }
      
     // Paired Programming Assignment Week 6 - get list of players for multiperson game
@@ -47,20 +48,20 @@ public class PlayerView implements Serializable{
             playerName = playerName.trim();
             
             if (playerName.length() < 1) {
-                new MemoryGameError().displayError("\n\t A name must be at least "
+                new MemoryGameError().display("\n\t A name must be at least "
                         + "one character long. Try again or \'Q\' to quit.");
                 continue;
             }
             
             if (playerName.equals("computer")) {
-                new MemoryGameError().displayError(
+                new MemoryGameError().display(
                         "\n\t Memory, is a mind training game, you cannot play against a computer."
                         + " please enter another name, or \'Q\' to quit.");
                 continue;
             }
             
             if (alreadyListed(playerNameList, playerName)) {
-                new MemoryGameError().displayError(
+                new MemoryGameError().display(
                         "\n\t That name has already been entered. Please enter another"
                         + " name, or \'Q\' to quit.");
                 continue;

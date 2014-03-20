@@ -1,6 +1,9 @@
-package memorygame;
+package evamichele.memorygame.views;
 
 import java.util.Scanner;
+import evamichele.memorygame.gamecreator.Game;
+import evamichele.memorygame.control.MemoryGameError;
+import evamichele.memorygame.control.Menu;
 /*
  * @author michelewhite
  */
@@ -78,7 +81,7 @@ public class OptionsMenuView extends Menu {
     {
          Game game=new Game();        
         if (noPlayers != 1  &&  noPlayers != 2) {
-            new MemoryGameError().displayError("startGame - invalid number of players specified.");
+            new MemoryGameError().display("startGame - invalid number of players specified.");
             return;
         }
         //COMMENT/////////////////////////////////////////////
@@ -170,10 +173,6 @@ public class OptionsMenuView extends Menu {
         return Game.PLAYING;
     }
 
-    
-    
-    
-    
     public void setNumbLevel(int level){
         this.numblevel = level;
     }

@@ -2,9 +2,11 @@
  * This class is done!
  */
 
-package memorygame;
+package evamichele.memorygame.control;
 
 import java.util.Scanner;
+import evamichele.memorygame.gamecreator.Player;
+import evamichele.memorygame.gamecreator.PlayerView;
 
 /**
  * @author Mpianatra

@@ -1,7 +1,7 @@
 /* This class creates the card board array mentioned in the CardDeck class
 *  I'm not sure what else it will need to do.
 */
-package memorygame;
+package evamichele.memorygame.gamecreator;
 
 import java.io.Serializable;
 
@@ -9,18 +9,18 @@ import java.io.Serializable;
  * @author Cope-Michele
  */
 
-public class CardView implements Serializable{
+public class Card implements Serializable{
     
     public boolean matched; // tells whether or not a card is matched
     public String back; // the hiden symbol at the back of the card
     private boolean showing;// true or false if the hidden card is showing
     private int front; //The font of the card 
     //private String symbol;
-    public CardView() {
+    public Card() {
         
     }
     // constractor 
-    public CardView(String theBack, int theFront) {
+    public Card(String theBack, int theFront) {
         showing = false; // showing refers to the back of the cards matching symbol
         matched = false;
         back = theBack;
