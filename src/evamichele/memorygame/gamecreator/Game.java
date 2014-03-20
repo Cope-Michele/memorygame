@@ -59,10 +59,10 @@ public class Game implements Serializable {
     private double startingPoints = 115.00;
     
     
-    public Game(){ //one player hard 
+    public Game(){  
         randomCard = new Random();
         getInput = new Scanner(System.in);
-        board = new Card[4][6];
+        board = new Card[4][4];
         playerA = new Player();
         playerB = new Player();    
         shuffle();
@@ -113,7 +113,50 @@ public class Game implements Serializable {
                 game.choosePairOfCards();// just a prototype needed to be created still
                 }  
             }
-        }   
+        }
+    
+    public void GameEasy(){
+        
+       String[] words = new String []{"RED","RED","RED","YELLOW","YELLOW","YELLOW","GREEN","GREEN","GREEN"};// because  the words  is shuffled I createn new string for each level
+        randomCard = new Random();
+        getInput = new Scanner(System.in);
+        board = new CardView[3][3];
+        module= 3;
+        
+            
+        shuffle();// I don't know if thos are necessary
+        setCells ();
+        printCells();
+       playGame();// this is  not  used 
+       
+      
+    }
+     public void GameMedium(){ 
+   
+    
+        randomCard = new Random();
+        getInput = new Scanner(System.in);
+        board = new Card[4][4];
+        module= 4;
+      
+        shuffle();
+        setCells ();
+        printCells();
+       playGame();
+      
+    }
+     public void GameHard(){ //one player hard 
+        randomCard = new Random();
+        
+        board = new CardView[6][6];
+        module= 6;
+            
+        shuffle();
+        setCells ();
+        printCells();
+       playGame();
+      
+    }
 
     public void choosePairOfCards(){
         int row1, col1, row2, col2;
