@@ -7,6 +7,7 @@
 
 package evamichele.memorygame.gamecreator;
 
+
 import evamichele.memorygame.control.MemoryGameError;
 import evamichele.memorygame.views.HelpMenuView;
 import java.lang.reflect.Array;
@@ -47,10 +48,10 @@ public class Game implements Serializable {
     private HelpMenuView gameRules;
     private Array gamePlayers;
     
-    private final Card[][]board;
-    private final String[] words={"RED","RED","ORANGE","ORANGE","YELLOW","YELLOW","GREEN","GREEN","BLUE","BLUE","PURPLE","PURPLE","INDIGO","INDIGO","BLACK","BLACK","WHITE","WHITE","GRAY","GRAY","BROWN","BROWN","PINK","PINK","TURQOUISE","TURQOUISE","AQUA","AQUA","MAROON","MAROON","LIME","LIME","VIOLET","VIOLET","AMBER","AMBER"};
-    private final Random randomCard;
-    private final Scanner getInput;
+    private  Card[][]board;
+    private  String[] words;
+    private  Random randomCard;
+    private  Scanner getInput;
     private int card;
     private int cardChoice1;
     private int cardChoice2;
@@ -67,7 +68,7 @@ public class Game implements Serializable {
     {
              
         if (noPlayers != 1  &&  noPlayers != 2) {
-            new MemoryGameError().displayError("startGame - invalid number of players specified.");
+            new MemoryGameError().display("startGame - invalid number of players specified.");
             return;
         }
       
@@ -119,7 +120,8 @@ public class Game implements Serializable {
                               }
         
              }
-    };
+    }
+    
      public void GameEasy(){
         
        words = new String []{"RED","RED","RED","YELLOW","YELLOW","YELLOW","GREEN","GREEN","GREEN"};// because  the words  is shuffled I createn new string for each level
@@ -246,7 +248,7 @@ public class Game implements Serializable {
        choosePairOfCards();
     }
 }
-}
+
     
 
 
