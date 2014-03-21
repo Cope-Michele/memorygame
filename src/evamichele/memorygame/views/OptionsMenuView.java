@@ -50,7 +50,7 @@ public class OptionsMenuView extends Menu {
                         break;
                      case "3":
                         this.setNumbLevel(3);
-                         break;
+                        break;
                      case "X":
                          return Game.EXIT;
             }

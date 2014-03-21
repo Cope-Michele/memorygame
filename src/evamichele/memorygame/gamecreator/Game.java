@@ -58,115 +58,94 @@ public class Game implements Serializable {
     private int gameMove=0;// the player move
     private boolean matched = false;
     private double startingPoints = 115.00;
-    public int module;
+    private int module;
    
-    
-   
-    
-     
-     public void startGame(int noPlayers,int gameLevel)
-    {
-             
+    public void startGame(int noPlayers,int gameLevel){         
         if (noPlayers != 1  &&  noPlayers != 2) {
-            new MemoryGameError().display("startGame - invalid number of players specified.");
+            new MemoryGameError().display("invalid number of players specified."
+                    + "Please select either a 1 or 2 player game.");
             return;
         }
-      
-       
-             
-        if (noPlayers == 1){module =3;
-            
-            if(gameLevel==1){
-               this.GameEasy();
-                        
-               
-                System.out.println(" One PLayer Level 1");
-               
-                             }
-             else if(gameLevel==2){
-                 this.GameMedium();
-               
-                 System.out.println(" One PLayer Level 2");
-             
-                              }
-             else if (gameLevel==3){
-               
-                 System.out.println(" One PLayer Level 3");
-                 
-                                   }
-                    
-                   
-            }
-       
-        else {
-             if(gameLevel==1){
-                   System.out.println(" Two PLayer Level 1");
-                   this.GameEasy();
-                   // create a LOOP?? for turns?
-                    // HOW TO MAKE IT THAT THE NEXT PLAYER COULD TAKE A TURN?
-               ;
-                
-                                        }
-             else if(gameLevel==2){
-                
-                 System.out.println(" Two PLayer Level 2");
-                 this.GameMedium();
-                
-                              }
-             else if (gameLevel==3){
-                 
-                 System.out.println(" Two PLayer Level 3");
-                this.GameHard();
-                              }
         
-             }
+        if (noPlayers == 1) {module = 6;     
+            if(gameLevel==1){
+                this.GameEasy();
+                System.out.println(" One PLayer Level 1");
+            }
+            else if(gameLevel==2){
+                this.GameMedium();
+                System.out.println(" One PLayer Level 2");
+            }
+            else if (gameLevel==3){
+                this.GameHard();
+                System.out.println(" One PLayer Level 3");
+            }    
+        }
+        
+        else {
+            if(gameLevel==1){
+                System.out.println(" Two PLayer Level 1");
+                this.GameEasy();
+            }
+            else if(gameLevel==2){   
+                System.out.println(" Two PLayer Level 2");
+                this.GameMedium();
+            }
+            else if (gameLevel==3){
+                System.out.println(" Two PLayer Level 3");
+                this.GameHard();
+            }
+        }
     }
     
-     public void GameEasy(){
+    public void GameEasy(){
         
-       words = new String []{"RED","RED","RED","YELLOW","YELLOW","YELLOW","GREEN","GREEN","GREEN"};// because  the words  is shuffled I createn new string for each level
+        words = new String []{"RED","RED","ORANGE","ORANGE","YELLOW","YELLOW","GREEN","GREEN","BLUE","BLUE"};
         randomCard = new Random();
         getInput = new Scanner(System.in);
         board = new Card[3][3];
-        module= 3;
-        
+        module = 3; 
             
         shuffle();// I don't know if thos are necessary
         setCells ();
         printCells();
-       playGame();// this is  not  used 
-       
-      
+        playGame();// this is  not  used 
+         
     }
-     public void GameMedium(){ 
+    
+    public void GameMedium(){ 
    
-      words = new String []{"RED","RED","RED","YELLOW","YELLOW","YELLOW","GREEN","GREEN","GREEN"};
+        words = new String []{"RED","RED","ORANGE","ORANGE","YELLOW","YELLOW","GREEN","GREEN","BLUE","BLUE","PURPLE","PURPLE","VIOLET","VIOLET","INDIGO","INDIGO"};
         randomCard = new Random();
         getInput = new Scanner(System.in);
         board = new Card[4][4];
-       module= 4;
+        module= 4;
       
         shuffle();
         setCells ();
         printCells();
-       playGame();
+        playGame();
       
     }
-     public void GameHard(){ //one player hard 
-        randomCard = new Random();
+    public void GameHard(){
         
+        words = new String []{"RED","RED","ORANGE","ORANGE","YELLOW","YELLOW","GREEN","GREEN","BLUE","BLUE","PURPLE","PURPLE","VIOLET","VIOLET","INDIGO","INDIGO","MAROON","MAROON","AQUA","AQUA","TEAL","TEAL","BLACK","BLACK","GRAY","GRAY","WHITE","WHITE","GOLD","GOLD","SILVER","SILVER","BROWN","BROWN","LIME","LIME"};
+        randomCard = new Random();
+        getInput = new Scanner(System.in);
         board = new Card[6][6];
         module= 6;
             
         shuffle();
         setCells ();
         printCells();
-       playGame();
+        playGame();
       
     }
- 
-     
-       
+    
+    public void playGame(){
+        choosePairOfCards();
+    }
+    
     public void choosePairOfCards(){
         int row1, col1, row2, col2;
         System.out.println();
@@ -179,8 +158,8 @@ public class Game implements Serializable {
         System.out.print("Second CardView Choice?>");
         System.out.print("\n");
         cardChoice2 =getInputAsInt();
-        row2=cardChoice2/3 ;
-        col2=cardChoice2%3;
+        row2=cardChoice2/module ;
+        col2=cardChoice2%module;
         board[row2][col2].setShowingStatus();
        
         System.out.print('\u000C'); // Clear the screen
@@ -243,9 +222,6 @@ public class Game implements Serializable {
 
     public String getInputAsString(){
         return getInput.nextLine();
-    }
-     public void playGame(){
-       choosePairOfCards();
     }
 }
 
