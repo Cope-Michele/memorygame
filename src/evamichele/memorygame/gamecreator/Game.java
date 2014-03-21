@@ -42,8 +42,6 @@ public class Game implements Serializable {
     public Player playerB;
     private Player currentPlayer;
     private Player otherPlayer;
-    private Player winner;// SAME AS THIS ONE ?  public static final String WINNER = "WINNER"; 
-    private Player loser;
     public String status;
     private HelpMenuView gameRules;
     private Array gamePlayers;
@@ -60,6 +58,10 @@ public class Game implements Serializable {
     private double startingPoints = 115.00;
     private int module;
    
+    public Game(String ONE_PLAYER_GAME){
+    
+    }
+    
     public void startGame(int noPlayers,int gameLevel){         
         if (noPlayers != 1  &&  noPlayers != 2) {
             new MemoryGameError().display("invalid number of players specified."
@@ -82,18 +84,18 @@ public class Game implements Serializable {
             }    
         }
         
-        else {
+        if (noPlayers ==2) {module = 6;
             if(gameLevel==1){
-                System.out.println(" Two PLayer Level 1");
                 this.GameEasy();
+                System.out.println(" Two PLayer Level 1");
             }
-            else if(gameLevel==2){   
-                System.out.println(" Two PLayer Level 2");
+            else if(gameLevel==2){
                 this.GameMedium();
+                System.out.println(" Two PLayer Level 2");
             }
             else if (gameLevel==3){
+                this.GameHard();                
                 System.out.println(" Two PLayer Level 3");
-                this.GameHard();
             }
         }
     }
@@ -144,6 +146,7 @@ public class Game implements Serializable {
     
     public void playGame(){
         choosePairOfCards();
+        
     }
     
     public void choosePairOfCards(){
@@ -223,6 +226,7 @@ public class Game implements Serializable {
     public String getInputAsString(){
         return getInput.nextLine();
     }
+    
 }
 
     

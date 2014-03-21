@@ -3,12 +3,11 @@
  */
 
 package evamichele.memorygame.views;
-import evamichele.memorygame.views.HelpMenuView;
-import java.util.Scanner;
 import evamichele.memorygame.gamecreator.Game;
 import evamichele.memorygame.control.MainMenuControl;
 import evamichele.memorygame.control.Memorygame;
 import evamichele.memorygame.control.Menu;
+import evamichele.memorygame.views.OptionsMenuView;
 
 /**
  * @author Eva
@@ -52,9 +51,7 @@ public class MainMenuView extends Menu {  //this class has a tight cohesion
             String command = this.getCommand();
             switch (command) {
                 case "N": case "n":
-                    this.mainMenuControl.createPlayerList();
-                    
-                    
+                    this.mainMenuControl.createPlayerList();    
                     break;
                 case "G":case "m":
                     // get number of players
@@ -66,15 +63,11 @@ public class MainMenuView extends Menu {  //this class has a tight cohesion
                     optionMenu.setWhatToDo("Level");
                     optionMenu.executeCommands(null);
        
-                    // play the game. (Need to move this to the Game class)
-                   // optionMenu.startGame(optionMenu.getNumbPlayers(), optionMenu.getNumbLevel());
-                   Game game = new Game();
+                    // play the game.
+                    Game game = new Game("ONE_PLAYER");
                     game.startGame(optionMenu.getNumbPlayers(), optionMenu.getNumbLevel());
-                    
-       
-                    //OptionsMenuView optionMenu = Memorygame.getOptionMenu();
-                    //optionMenu.executeCommands(null);
-                    /*this.optionMenuView.getCommand();*/
+                    GameMenuView gameMenu = new GameMenuView();
+                    gameMenu.executeCommands(game);
                     break;
                 case "H":case"h":
                     HelpMenuView helpMenu = Memorygame.getHelpMenu();
@@ -84,10 +77,9 @@ public class MainMenuView extends Menu {  //this class has a tight cohesion
                     this.mainMenuControl.displayStatistics();
                     break;
                 case "X":case"x":
-                    return Game.EXIT;
-                 
-                                
+                    return Game.EXIT;              
             }
+            
       } while (!gameStatus.equals(Game.EXIT));
 
         return Game.EXIT;

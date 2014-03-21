@@ -22,20 +22,18 @@ public class Player implements Serializable{
     public static final String MAIN_USER = "USER_ONE";
     public static final String SECOND_USER = "USER_TWO";
     public String name;
-        
+    private boolean Cards;    
     private int gameMove;
     private String playerType;
     private long wins = 0;
     private long losses = 0;
     private long ties = 0;
-    private double startingPoints = 115.00;
+    private final double startingPoints = 115.00;
     
     public Player(){
-        this.getTotalPoints();
-        getTotalPoints();
-        this.calculateBestTime(55.55,235.55);
-        this.calculateFactorial(5);
-        this.calculateHappiness(12, 4);    
+        //this.getTotalPoints();
+        //this.calculateBestTime(55.55,235.55);
+        //this.getWinningScore(gameMove, Cards);
     }
     
     public Player (String userType){
@@ -90,7 +88,7 @@ public class Player implements Serializable{
         this.ties = ties;
     }
 
- // Paired Programming Assignment
+    // Paired Programming Assignment
     private void calculateBestTime(double recordBest, double newTime){
         int secondsBehind;
         int secondsAhead;
@@ -139,7 +137,7 @@ public class Player implements Serializable{
     }
         
         //Michele's Week 6 individual Assignment (collects and totals a players points)
-public void getTotalPoints() {    
+    private void getTotalPoints() {    
         int points[] = {100, 115, 89, 60, 77, 26, 115};
         int sum = 0;
         for(int p : points) {
@@ -150,43 +148,6 @@ public void getTotalPoints() {
         if(points.length < 1) {
             new MemoryGameError().display("\n\t It looks like you Haven't "
             + "played yet! Play a game of Memory first to view your statistics");
-        }
-    }
-     
-public void calculateFactorial(int number) {
-     if (number < 0 || number > 70) {
-         System.out.println("Invalid number.");
-     }
-    if (number < 70 && number > 0) {
-         long num = (long) (number);
-         long factorial = 1;
-         
-         for(int i = 1; i < number; i++) {
-            if(i == 1) {
-                factorial = num * (num - i);
-            } else {
-                factorial *= num - i;
-            }
-        }
-
-
-        System.out.println("The factorial is: " + factorial);
-   }
-
-}
-
-    public void calculateHappiness(int totalWins, int totalLosses) {
-        if (totalWins == 0 || totalLosses == 0) {
-            System.out.println("Insufficient Data.");
-    } else if (totalWins > totalLosses) {
-        System.out.println("Yay! You're winning more than you're losing, you "
-            + "must be happy.\nTotal wins: " + totalWins);
-    } else if (totalWins < totalLosses) {
-        System.out.println("You're losing more games than you're winning, you "
-            + "must be sad.");
-    } else if (totalWins == totalLosses) {
-        System.out.println("Games won: " + totalWins +"\nTotal Lost: " 
-        + totalLosses + "\nIts a tie!");
         }
     }
 }

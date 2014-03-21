@@ -2,8 +2,10 @@ package evamichele.memorygame.views;
 
 import java.util.Scanner;
 import evamichele.memorygame.gamecreator.Game;
-import evamichele.memorygame.control.MemoryGameError;
 import evamichele.memorygame.control.Menu;
+import evamichele.memorygame.control.MemoryGameError;
+import evamichele.memorygame.gamecreator.Player;
+
 /*
  * @author michelewhite
  */
@@ -25,8 +27,6 @@ public class OptionsMenuView extends Menu {
         {"2","Two Player"},
         {"X","Quit Options Menu"},
     };
-   // LevelMenuView levelMenu= new LevelMenuView();
-    
     
     public OptionsMenuView() {
         super(OptionsMenuView.menuItemsNumbPlayers);
@@ -71,72 +71,18 @@ public class OptionsMenuView extends Menu {
             }
         }
         
- 
         return Game.EXIT;
     }
-    
-    
-    /*
-    public void startGame(int noPlayers,int gameLevel)
-    {
-         Game game=new Game();        
-        if (noPlayers != 1  &&  noPlayers != 2) {
-            new MemoryGameError().display("startGame - invalid number of players specified.");
-            return;
-        }
-        //COMMENT/////////////////////////////////////////////
-         // The game should not be calling from here to create a tight cohesion.
-        //I think Game class should call here and get the "noPlayers" and "gameLevel" parameters
-        // to set the right board for each game 
-       
-        
-//        if (noPlayers == 1){
-//            if(gameLevel==1){
-//                System.out.println(" One PLayer Level 1");
-//               
-//                game.choosePairOfCards();// just a prototype needed to be created still
-//                }
-//             else if(gameLevel==2){
-//                 System.out.println(" One PLayer Level 2");
-//                    game.choosePairOfCards();// just a prototype needed to be created still
-//                    }
-//             else if (gameLevel==3){
-//                System.out.println(" One PLayer Level 3");
-//                    game.choosePairOfCards(); // just a prototype needed to be created still   
-//                    }      
-//                }
-//        else {
-//             if(gameLevel==1){
-//                System.out.println(" Two PLayer Level 1");
-//                game.choosePairOfCards();// just a prototype needed to be created still
-//                }
-//             else if(gameLevel==2){
-//                 System.out.println(" Two PLayer Level 2");
-//                  game.choosePairOfCards();// just a prototype needed to be created still
-//                              }
-//             else if (gameLevel==3){
-//                 System.out.println(" Two PLayer Level 3");
-//                  game.choosePairOfCards();// just a prototype needed to be created still
-//                              }
-//        
-//             }
-        
-    }
 
-              
-                
-
-     
-    
-    //    private Game createGame(String gameType) {
+        private Game createGame(String gameType) {
         Game game = null;
         Player playerA = null;
         Player playerB = null;
         
-     //   if (gameType == null) {
-       //     new MemoryGameError().displayError("MainCommands - create: gameType is null");
-         //   return null;
-        //}
+       if (gameType == null) {
+           new MemoryGameError().display("MainCommands - create: gameType is null");
+           return null;
+        }
         
         if (gameType.equals(Game.ONE_PLAYER_GAME)) {
             game = new Game(Game.ONE_PLAYER_GAME);
@@ -160,7 +106,7 @@ public class OptionsMenuView extends Menu {
         game.status = Game.NO_ACTIVE_GAME;
         
         return game;
-    }*/ 
+    } 
     
     public String quitGame() {
         System.out.println("\n\tAre you sure you want to quit? (Y or N)");

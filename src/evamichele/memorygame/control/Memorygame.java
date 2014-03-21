@@ -8,6 +8,7 @@ import evamichele.memorygame.gamecreator.Game;
 import evamichele.memorygame.views.OptionsMenuView;
 import evamichele.memorygame.views.MainMenuView;
 import evamichele.memorygame.views.HelpMenuView;
+import evamichele.memorygame.views.GameMenuView;
 import java.util.Scanner;
 import evamichele.memorygame.gamecreator.Player;
 
@@ -22,7 +23,7 @@ public class Memorygame {
     
     private static Player[] playerList;
     private static String name;
-    private final static String instructions = "\n\t______________________________________________________________________"
+    private final static String instructions = "\n\t______________________________________________________________________\n"
                         + "\n\tMemory is the name of this game!"
                         + "\n\tThe purpose of the game is to clear the board of all cards by matching"
                         + "\n\teach card with its \"twin\" when the board is clear the game is over."
@@ -60,14 +61,16 @@ public class Memorygame {
         optionMenu.executeCommands(null);
         
         // get the level
-       optionMenu.setWhatToDo("Level");
-       optionMenu.executeCommands(null);
+        optionMenu.setWhatToDo("Level");
+        optionMenu.executeCommands(null);
        
-       // play the game. (Need to move this to the Game class)
-        Game game = new Game();
-       game.startGame(optionMenu.getNumbPlayers(), optionMenu.getNumbLevel());
+        // play the game. (Need to move this to the Game class)
+        Game game = new Game("ONE_PLAYER");
+        game.startGame(optionMenu.getNumbPlayers(), optionMenu.getNumbLevel()); 
         
-                
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.executeCommands(null);
+        
         Memorygame.inFile.close();
     }
   
