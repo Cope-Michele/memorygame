@@ -6,9 +6,10 @@
 
 package evamichele.memorygame.gamecreator;
 
-import evamichele.memorygame.interfaces.DisplayInfo;
+import evamichele.memorygame.interfaces.GetInput;
 import evamichele.memorygame.control.MemoryGameError;
 import java.io.Serializable;
+import java.util.Scanner;
 /**
  * @author KenandEva
  * this class creates our Player Object, kind of like the little silver pieces 
@@ -17,11 +18,12 @@ import java.io.Serializable;
 
 // Eva's individual assignment lesson 3
 // Paired Programming Assignment Lesson 8
-public class Player implements Serializable{
+public class Player implements Serializable, GetInput{
     
     public static final String MAIN_USER = "USER_ONE";
     public static final String SECOND_USER = "USER_TWO";
     public String name;
+    private String age;
     private boolean Cards;    
     private int gameMove;
     private String playerType;
@@ -29,8 +31,10 @@ public class Player implements Serializable{
     private long losses = 0;
     private long ties = 0;
     private final double startingPoints = 115.00;
+    private Scanner getInput;
     
     public Player(){
+        getInput = new Scanner(System.in);
         //this.getTotalPoints();
         //this.calculateBestTime(55.55,235.55);
         //this.getWinningScore(gameMove, Cards);
@@ -39,7 +43,14 @@ public class Player implements Serializable{
     public Player (String userType){
         
     }
-
+    
+    public String getAge(){
+        System.out.println("Enter the number on the card.");
+        System.out.print("First Card Choice?>");
+        age =getInputAsString();
+        return age;
+    }
+    
     public String getName() {
         return name;
     }
@@ -87,7 +98,11 @@ public class Player implements Serializable{
     public void setTies(long ties) {
         this.ties = ties;
     }
-
+    
+    public String getInputAsString(){
+        return getInput.nextLine();
+    }
+    
     // Paired Programming Assignment
     private void calculateBestTime(double recordBest, double newTime){
         int secondsBehind;

@@ -42,10 +42,10 @@ public class Memorygame {
     }
     
                 
-    public static void main(String[] args) {
+    public static void main (String[] args) {
         //Memorygame myGame= new Memorygame();
         // get the users name
-        getName();
+        getCommand();
         
         // display the instructions
         displayInstructions();
@@ -75,7 +75,7 @@ public class Memorygame {
     }
   
     
-    public static void getName() {
+    public static void getCommand() {
         Scanner inFile=Memorygame.getInputFile();
         System.out.println("Enter your name: ");
         name = inFile.next(); 

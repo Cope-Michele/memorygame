@@ -16,7 +16,7 @@ import evamichele.memorygame.control.Menu;
  * @author michelecope
  */
 public class HelpMenuView extends Menu  {
-     public static final String OBJECTIVE = "OBJECTIVE";
+    public static final String OBJECTIVE = "OBJECTIVE";
     public static final String  PLAYER_ONE= "PLAYER-ONE";
     public static final String PLAYER_TWO = "PLAYER_TWO";
     

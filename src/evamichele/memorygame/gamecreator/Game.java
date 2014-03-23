@@ -9,6 +9,7 @@ package evamichele.memorygame.gamecreator;
 
 
 import evamichele.memorygame.control.MemoryGameError;
+import evamichele.memorygame.interfaces.GetInput;
 import evamichele.memorygame.views.HelpMenuView;
 import java.lang.reflect.Array;
 import java.util.Random;
@@ -19,7 +20,7 @@ import java.io.Serializable;
  * @author michelecope
  */
 
-public class Game implements Serializable {  
+public class Game implements Serializable, GetInput {  
     //these tags are used to reference the Game class in other classes.
     public static final String ONE_PLAYER_GAME = "ONE_PLAYER";
     public static final String TWO_PLAYER_GAME = "TWO_PLAYER";

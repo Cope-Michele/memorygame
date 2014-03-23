@@ -17,4 +17,9 @@ public class MemoryGameError implements DisplayInfo{
         System.out.println("\n\t______________________________________________________________________");
         return null;
     }
+
+    @Override
+    public void display() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
