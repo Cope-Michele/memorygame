@@ -7,7 +7,7 @@ import evamichele.memorygame.gamecreator.Game;
 import evamichele.memorygame.control.MainMenuControl;
 import evamichele.memorygame.control.Memorygame;
 import evamichele.memorygame.control.Menu;
-import evamichele.memorygame.views.OptionsMenuView;
+import evamichele.memorygame.exceptions.MenuException;
 
 /**
  * @author Eva
@@ -46,6 +46,7 @@ public class MainMenuView extends Menu {  //this class has a tight cohesion
           String gameStatus = Game.PLAYING;
    
           do {
+              try { 
             this.display();           
            
             String command = this.getCommand();
@@ -78,6 +79,10 @@ public class MainMenuView extends Menu {  //this class has a tight cohesion
                     break;
                 case "X":case"x":
                     return Game.EXIT;              
+                 }
+            }
+            catch (MenuException error) {
+                System.out.println("\n" + error.getMessage());
             }
             
       } while (!gameStatus.equals(Game.EXIT));

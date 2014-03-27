@@ -5,6 +5,7 @@ import evamichele.memorygame.gamecreator.Game;
 import evamichele.memorygame.control.MainMenuControl;
 import evamichele.memorygame.control.Memorygame;
 import evamichele.memorygame.control.Menu;
+import evamichele.memorygame.exceptions.MenuException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -43,9 +44,9 @@ super(GameMenuView.menuItems);
     @Override
     public String executeCommands(Object object) {
         String gameStatus = Game.PLAYING;
-    
-    
-        do {    
+        do {
+            try{
+                
             this.display(); // display the menu
 
               String command = this.getCommand();
@@ -65,10 +66,15 @@ super(GameMenuView.menuItems);
                     break;
                 case "X": case"x":                  
                    return Game.EXIT;                     
+                }
             }
+            
+            catch (MenuException error) {
+                System.out.println("\n" + error.getMessage());
+            }
+            
       } while (!gameStatus.equals(Game.EXIT));
         
-
            return Game.EXIT;
     }
   

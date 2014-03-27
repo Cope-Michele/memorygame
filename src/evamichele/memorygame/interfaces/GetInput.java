@@ -13,5 +13,6 @@ package evamichele.memorygame.interfaces;
 public interface GetInput {
     
     public String getInputAsString();
+    //String getCommand();
 
 }

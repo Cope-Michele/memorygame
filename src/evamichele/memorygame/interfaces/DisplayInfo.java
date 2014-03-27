@@ -13,6 +13,6 @@ package evamichele.memorygame.interfaces;
 public interface DisplayInfo {
     
     void display();
-    Object display(Object object);
+    //Object display(Object object);
     
 }

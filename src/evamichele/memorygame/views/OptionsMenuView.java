@@ -5,6 +5,7 @@ import evamichele.memorygame.gamecreator.Game;
 import evamichele.memorygame.control.Menu;
 import evamichele.memorygame.control.MemoryGameError;
 import evamichele.memorygame.gamecreator.Player;
+import evamichele.memorygame.exceptions.MenuException;
 
 /*
  * @author michelewhite
@@ -37,7 +38,7 @@ public class OptionsMenuView extends Menu {
         //String gameStatus = Game.PLAYING;
         
         if (this.whatToDo.equalsIgnoreCase("Level")){
-            
+            try{
             this.setMenuItems(menuItemsLevel);                
             this.display();
             String command = this.getCommand();
@@ -54,8 +55,13 @@ public class OptionsMenuView extends Menu {
                      case "X":
                          return Game.EXIT;
             }
+            }
+            catch (MenuException error) {
+                System.out.println("\n" + error.getMessage());
+            }
         }else if (this.whatToDo.equalsIgnoreCase("Player")){
-            //LevelMenuView levelMenu = new LevelMenuView();           
+            //LevelMenuView levelMenu = new LevelMenuView();
+            try{
             this.setMenuItems(menuItemsNumbPlayers); 
             this.display();
             String command = this.getCommand();
@@ -68,11 +74,16 @@ public class OptionsMenuView extends Menu {
                    break;
                  case "X":case"x":
                     return Game.EXIT;
+                }
             }
-        }
-        
+            catch (MenuException error) {
+                System.out.println("\n" + error.getMessage());
+            }
         return Game.EXIT;
+        }
+        return null;
     }
+    
 
         private Game createGame(String gameType) {
         Game game = null;

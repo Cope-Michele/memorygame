@@ -9,7 +9,7 @@ package evamichele.memorygame.views;
 import java.util.Scanner;
 import evamichele.memorygame.gamecreator.Game;
 import evamichele.memorygame.control.Menu;
-
+import evamichele.memorygame.exceptions.MenuException;
 
 
 /**
@@ -37,6 +37,7 @@ public class HelpMenuView extends Menu  {
          String gameStatus = Game.PLAYING;
                 
         do {
+            try{
             
             this.display(); 
             String command = this.getCommand();
@@ -54,6 +55,11 @@ public class HelpMenuView extends Menu  {
                 case "Q": 
                      return Game.EXIT;
                }
+            }
+            catch (MenuException error) {
+                System.out.println("\n" + error.getMessage());
+            }
+            
         } while (!gameStatus.equals(Game.EXIT));  
         
          return gameStatus;

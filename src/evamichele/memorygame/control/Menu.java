@@ -6,13 +6,16 @@
 
 package evamichele.memorygame.control;
 
+import evamichele.memorygame.enums.ErrorType;
 import java.util.Scanner;
+import evamichele.memorygame.interfaces.DisplayInfo;
+import evamichele.memorygame.exceptions.MenuException;
 
 /**
  *
  * @author Mpianatra
  */
-public abstract class Menu {
+public abstract class Menu implements DisplayInfo{
     
     private String[][] menuItems = null;
 
@@ -57,10 +60,10 @@ public abstract class Menu {
         return false;
     }
 
-    protected final String getCommand() {
+    protected final String getCommand() throws MenuException{
 
-       // Scanner inFile = Memorygame.getInputFile();
-         Scanner inFile = new Scanner(System.in);
+        // Scanner inFile = Memorygame.getInputFile();
+        Scanner inFile = new Scanner(System.in);
         String command;
         boolean valid = false;
         do {
@@ -68,14 +71,11 @@ public abstract class Menu {
             command = command.trim().toUpperCase();
             valid = validCommand(command);
             if (!validCommand(command)) {
-               new MemoryGameError().display("Invalid command. Please enter a valid command.");
+               throw new MenuException(ErrorType.ERROR3.getMessage());
                 //continue;
-            }
-                
-        } while (!valid);
+            }                
+            return command;
         
-        return command;
+        } while (!valid);
     }
-
-
 }
