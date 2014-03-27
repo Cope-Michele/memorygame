@@ -28,7 +28,7 @@ public abstract class Menu implements DisplayInfo{
     }
     
   
-    public abstract String executeCommands(Object object);
+    public abstract String executeCommands(Object object) throws MenuException;
     
     public String[][] getMenuItems() {
         return menuItems;

@@ -4,6 +4,7 @@
 
 package evamichele.memorygame.control;
 
+import evamichele.memorygame.exceptions.MenuException;
 import evamichele.memorygame.gamecreator.Game;
 import evamichele.memorygame.views.OptionsMenuView;
 import evamichele.memorygame.views.MainMenuView;
@@ -52,9 +53,13 @@ public class Memorygame {
         
         // display main menu
         MainMenuView mainMenu = new MainMenuView();
-        mainMenu.executeCommands(null);
-        
-        
+            try {
+            mainMenu.executeCommands(null);
+        }
+        catch (MenuException error) {
+                System.out.println("\n" + error.getMessage());
+                }
+          
         // get number of players
         OptionsMenuView optionMenu = new OptionsMenuView();
         optionMenu.setWhatToDo("Player");
@@ -71,7 +76,15 @@ public class Memorygame {
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.executeCommands(null);
         
+        try {
+            mainMenu.executeCommands(null);
+        }
+        catch (MenuException error) {
+                System.out.println("\n" + error.getMessage());
+                }
+        finally{
         Memorygame.inFile.close();
+        }
     }
   
     

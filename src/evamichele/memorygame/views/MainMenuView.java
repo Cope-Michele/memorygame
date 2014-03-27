@@ -38,10 +38,8 @@ public class MainMenuView extends Menu {  //this class has a tight cohesion
     }
  
 
-    @Override
-  
-       
-    public String executeCommands(Object object) {
+    @Override    
+    public String executeCommands(Object object) throws MenuException{
        
           String gameStatus = Game.PLAYING;
    
