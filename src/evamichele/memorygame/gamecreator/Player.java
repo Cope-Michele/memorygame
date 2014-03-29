@@ -70,7 +70,7 @@ public class Player implements Serializable, GetInput{
     }
 
     public long getWins() {
-     System.out.println("you win mostly, you score will be here");
+     System.out.println("Your Score will be print here");
      //gameStatus = GameStatus.EXIT;
         return wins;
     }

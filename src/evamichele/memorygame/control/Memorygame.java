@@ -18,7 +18,7 @@ import evamichele.memorygame.gamecreator.Player;
  */
 
 public class Memorygame {
-    private static final Scanner inFile = new Scanner(System.in);
+    public static final Scanner inFile = new Scanner(System.in);
     private static final HelpMenuView helpMenu = new HelpMenuView();
     private static final OptionsMenuView optionMenu = new OptionsMenuView();
     

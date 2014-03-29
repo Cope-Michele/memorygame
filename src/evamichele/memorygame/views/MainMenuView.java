@@ -69,8 +69,14 @@ public class MainMenuView extends Menu {  //this class has a tight cohesion
                     int somme = optionMenu.getNumbLevel()/(optionMenu.getNumbPlayers()-2);
                     }
                     catch (ArithmeticException e) {
-                    System.out.println ("This game is only available for one player for this semster");
+                    System.out.println (
+                             "\n\t______________________________________________________________________\n"
+                     
+                               + "\n \" This game is only available for one player for this semster,"
+                               + " please choose the one player  option\"\""
+                               +"\n\t______________________________________________________________________\n");
                     }
+                    
                     Player statistic = new Player();
                     statistic.getWins();
                                        
