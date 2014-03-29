@@ -12,7 +12,9 @@ import evamichele.memorygame.control.MemoryGameError;
 import evamichele.memorygame.enums.ErrorType;
 import evamichele.memorygame.enums.GameStatus;
 import evamichele.memorygame.exceptions.GameException;
+import evamichele.memorygame.exceptions.MenuException;
 import evamichele.memorygame.interfaces.GetInput;
+import evamichele.memorygame.views.GameMenuView;
 import evamichele.memorygame.views.HelpMenuView;
 import java.lang.reflect.Array;
 import java.util.Random;
@@ -69,7 +71,7 @@ public class Game implements Serializable, GetInput {
     
     public void startGame(int noPlayers,int gameLevel) throws GameException{         
         if (noPlayers != 1  &&  noPlayers != 2) {
-            throw new GameException(ErrorType.ERROR11.getMessage());
+            throw new GameException(ErrorType.ERROR3.getMessage());
         }
         
         if (noPlayers == 1) {module = 6;     
@@ -77,7 +79,7 @@ public class Game implements Serializable, GetInput {
                 System.out.println(
       "\n\t______________________________________________________________________\n"
                      
-      + "\n \" Game One PLayer Level 1\""
+      + "\n \"One Player Game - Easy"
       +"\n\t______________________________________________________________________\n");
                 this.GameEasy();
                
@@ -94,8 +96,8 @@ public class Game implements Serializable, GetInput {
             }    
         }
         
-        if (noPlayers ==2) {
-             throw new GameException(ErrorType.ERROR11.getMessage());
+    if (noPlayers ==2) {
+        throw new GameException(ErrorType.ERROR12.getMessage());          
         }
     }
   
@@ -107,12 +109,11 @@ public class Game implements Serializable, GetInput {
         board = new Card[3][3];
         module = 3; 
             
-        shuffle();// I don't know if thos are necessary
+        shuffle();
         setCells ();
         printCells();
         playGame();
-       // cOntinue();// this is  not  used 
-         
+             
     }
     
     public void GameMedium(){ 
@@ -126,7 +127,7 @@ public class Game implements Serializable, GetInput {
         shuffle();
         setCells ();
         printCells();
-       // playGame();
+        playGame();
       
     }
     public void GameHard(){
@@ -140,29 +141,27 @@ public class Game implements Serializable, GetInput {
         shuffle();
         setCells ();
         printCells();
-       // playGame();
+        playGame();
       
     }
     
-    public void playGame() throws GameException{
+    public void playGame(){
         choosePairOfCards();
-        //cOntinue();
-        
     }
     
-    public void choosePairOfCards() throws GameException{
+    public void choosePairOfCards(){
         int row1, col1, row2, col2;
           try{
         System.out.println();
         System.out.println("Enter the number on the card.");
-        System.out.print("First Card Choice?>");
+        System.out.print("First Card Choice? >>");
         cardChoice1 =getInputAsInt();
         row1=cardChoice1/module;
         col1=cardChoice1%module;
         board[row1][col1].setShowingStatus();
         
         System.out.print("\n");
-        System.out.print("Second CardView Choice?>");
+        System.out.print("Second Card Choice? >>");
         cardChoice2 =getInputAsInt();
         row2=cardChoice2/module ;
         col2=cardChoice2%module;
@@ -171,14 +170,15 @@ public class Game implements Serializable, GetInput {
         
         if (cardChoice1 == cardChoice2){
             System.out.print("\n");
-        	throw new GameException(ErrorType.ERROR1.getMessage());
-            }
-        playGame();  
+        	System.out.println("You can't pick the same exact card... \n Try again");
+        	playGame();
+        }
+          
         System.out.print('\u000C'); // Clear the screen
         printCells();
         matchedCards(row1, col1, row2, col2);
         
-            }
+          }
         
  
          catch (ArrayIndexOutOfBoundsException e) {
@@ -212,21 +212,24 @@ public class Game implements Serializable, GetInput {
             //playGame();
         }
     }
-            public void continueGame(){  
-            System.out.println("want to continue?Y or N");
-              Scanner inFile = new Scanner(System.in);
-              String answer = inFile.next().trim().toUpperCase();
-                     if (answer.equals("N")) {
 
-                        System.out.println("You are now Leaving the game");
-                     gameStatus= GameStatus.EXIT;
-                     }
-                     else {
-                     System.out.println("You are now playing the game again");
-                     playGame();}
-                     }
-            
-        private void getWinningScore(int gameMove, boolean cards){
+    public void continueGame(){ 
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.executeCommands(null);
+//            System.out.println("want to continue?Y or N");
+//              Scanner inFile = new Scanner(System.in);
+//              String answer = inFile.next().trim().toUpperCase();
+//                     if (answer.equals("N")) {
+//
+//                        System.out.println("You are now Leaving the game");
+//                     gameStatus= GameStatus.EXIT;
+//                     }
+//                     else {
+//                     System.out.println("You are now playing the game again");
+       //playGame();
+        }
+
+    private void getWinningScore(int gameMove, boolean cards){
         
         int score= (int) (startingPoints)-gameMove;// cast double to int
         if ((cards==true)&&(gameMove==15)){
@@ -245,12 +248,6 @@ public class Game implements Serializable, GetInput {
             System.out.println("invalid input\n");
         }            
     }
-          
-        
-
-                
-        
-   
    
    public void setCells (){
        card = 0;//the front of the card
@@ -263,7 +260,6 @@ public class Game implements Serializable, GetInput {
            }
        }
    }
-
    
    public void printCells(){
        for (int row=0; row<board.length;row++){
@@ -291,9 +287,8 @@ public class Game implements Serializable, GetInput {
     public String getInputAsString(){
         return getInput.nextLine();
     }
-    
-    
 }
+
 
     
 

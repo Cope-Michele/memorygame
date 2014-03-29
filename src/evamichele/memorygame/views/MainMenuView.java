@@ -9,7 +9,10 @@ import evamichele.memorygame.control.Memorygame;
 import evamichele.memorygame.control.Menu;
 import evamichele.memorygame.exceptions.MenuException;
 import evamichele.memorygame.enums.GameStatus;
+import evamichele.memorygame.exceptions.GameException;
 import evamichele.memorygame.gamecreator.Player;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author Eva
@@ -75,7 +78,9 @@ public class MainMenuView extends Menu {  //this class has a tight cohesion
                                + "\n \" This game is only available for one player for this semster,"
                                + " please choose the one player  option\"\""
                                +"\n\t______________________________________________________________________\n");
-                    }
+                    } catch (GameException ex) {
+                Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
                     
                     Player statistic = new Player();
                     statistic.getWins();

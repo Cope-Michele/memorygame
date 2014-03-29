@@ -42,7 +42,8 @@ public class OptionsMenuView extends Menu {
         
         if (this.whatToDo.equalsIgnoreCase("Level")){
             try{
-            this.setMenuItems(menuItemsLevel);                
+
+                this.setMenuItems(menuItemsLevel);                
             this.display();
             String command = this.getCommand();
             switch (command) {
