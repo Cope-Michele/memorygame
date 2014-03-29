@@ -52,7 +52,7 @@ public class MainMenuView extends Menu {  //this class has a tight cohesion
             String command = this.getCommand();
             switch (command) {
                 
-                case "G":case "m":
+                case "G":case "g":
                     // get number of players
                     OptionsMenuView optionMenu = new OptionsMenuView();
                     optionMenu.setWhatToDo("Player");
@@ -63,8 +63,14 @@ public class MainMenuView extends Menu {  //this class has a tight cohesion
                     optionMenu.executeCommands(null);
        
                     // play the game.
+                    try{
                     Game game = new Game();
                     game.startGame(optionMenu.getNumbPlayers(), optionMenu.getNumbLevel());
+                    int somme = optionMenu.getNumbLevel()/(optionMenu.getNumbPlayers()-2);
+                    }
+                    catch (ArithmeticException e) {
+                    System.out.println ("This game is only available for one player for this semster");
+                    }
                     Player statistic = new Player();
                     statistic.getWins();
                                        

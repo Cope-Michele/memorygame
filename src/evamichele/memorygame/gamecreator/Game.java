@@ -74,33 +74,30 @@ public class Game implements Serializable, GetInput {
         
         if (noPlayers == 1) {module = 6;     
             if(gameLevel==1){
+                System.out.println(
+      "\n\t______________________________________________________________________\n"
+                     
+      + "\n \" Game One PLayer Level 1\""
+      +"\n\t______________________________________________________________________\n");
                 this.GameEasy();
-                //System.out.println(" One PLayer Level 1");
+               
             }
             else if(gameLevel==2){
+                 System.out.println(" Game One PLayer Level 2");
                 this.GameMedium();
-                System.out.println(" One PLayer Level 2");
+               
             }
             else if (gameLevel==3){
+                System.out.println(" Game One PLayer Level 3");
                 this.GameHard();
-                System.out.println(" One PLayer Level 3");
+               
             }    
         }
         
-        if (noPlayers ==2) {module = 6;
-            if(gameLevel==1){
-                this.GameEasy();
-                System.out.println(" Two PLayer Level 1");
-            }
-            else if(gameLevel==2){
-                this.GameMedium();
-                System.out.println(" Two PLayer Level 2");
-            }
-            else if (gameLevel==3){
-                this.GameHard();                
-                System.out.println(" Two PLayer Level 3");
-            }
-        }
+      /*  if (noPlayers ==2) {
+             System.out.println(" Game for two player not available Please try for one player");
+          
+        }*/
     }
   
     public void GameEasy(){
@@ -171,6 +168,13 @@ public class Game implements Serializable, GetInput {
         row2=cardChoice2/module ;
         col2=cardChoice2%module;
         board[row2][col2].setShowingStatus();
+        int sum = 1/(cardChoice1 - cardChoice2);
+        
+        if (cardChoice1 == cardChoice2){
+            System.out.print("\n");
+        	System.out.println("You can't pick the same exact card... \n Try again");
+        	playGame();
+        }
           
         System.out.print('\u000C'); // Clear the screen
         printCells();
@@ -178,11 +182,20 @@ public class Game implements Serializable, GetInput {
         
           }
         
-    
-    catch (ArrayIndexOutOfBoundsException e) {
+ 
+         catch (ArrayIndexOutOfBoundsException e) {
          System.out.println("Array is out of Bounds"+e);
       
       }
+          catch (ArithmeticException e) {
+               System.out.print(
+      "\n\t______________________________________________________________________\n"
+                     
+      + "\n You can't pick the same exact card... \n Try again"
+      +"\n\t______________________________________________________________________\n");
+         playGame();
+      }
+
 }
 
     public void matchedCards(int row1, int col1, int row2, int col2){

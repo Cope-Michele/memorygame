@@ -11,20 +11,33 @@ package evamichele.memorygame.enums;
  * @author michelewhite
  */
 public enum GameStatus {
-    NO_ACTIVE_GAME,
-    NEWGAME,
-    CONTINUE,
-    PLAYING,
-    WIN,
-    TIE,
-    QUIT,
-    ERROR,
-    EXIT,
-    OBJECTIVE,
-    ONE_PLAYER_GAME,
-    TWO_PLAYER_GAME,
-    MAIN_USER,
-    SECOND_USER,
-    PLAYER_ONE,
-    PLAYER_TWO;
+  
+
+  CONTINUE ("CONTINUE"),
+    NEW_GAME ("NEW_GAME"),
+    PLAYING ("PLAYING"), 
+    WINNER ("WINNER"), 
+    TIE ("TIE"), 
+    QUIT ("QUIT"), 
+    ERROR ("ERROR"),
+    EXIT ("EXIT"),
+     NO_ACTIVE_GAME("NO_ACTIVE_GAME"),
+    NEWGAME("NEW_GAME"),
+    OBJECTIVE("OBJECTIVE"),
+    ONE_PLAYER_GAME("ONE_PLAYER_GAME"),
+    TWO_PLAYER_GAME("TWO_PLAYER_GAME"),
+    MAIN_USER("MAIN_USER"),
+    SECOND_USER("SECOND_USER"),
+    PLAYER_ONE("PLAYER_ONE"),
+    PLAYER_TWO("PLAYER_TWO");
+    
+    String value;
+    
+    GameStatus(String value) {
+        this.value = value;   
+    }
+    
+    public String getValue() {
+        return value;
+    }
 }

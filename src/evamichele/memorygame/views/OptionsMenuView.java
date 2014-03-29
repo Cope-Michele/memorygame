@@ -72,10 +72,11 @@ public class OptionsMenuView extends Menu {
                 case "1": 
                    this.setNumbPlayers(1);
                    break;
-                case "2":
+               case "2":
                    this.setNumbPlayers(2);
+                   
                    break;
-                 case "X":case"x":
+                case "X":case"x":
                    gameStatus= GameStatus.QUIT;
                 }
             }
