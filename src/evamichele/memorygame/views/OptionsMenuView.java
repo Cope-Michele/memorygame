@@ -6,6 +6,7 @@ import evamichele.memorygame.control.Menu;
 import evamichele.memorygame.control.MemoryGameError;
 import evamichele.memorygame.gamecreator.Player;
 import evamichele.memorygame.exceptions.MenuException;
+import evamichele.memorygame.enums.GameStatus;
 
 /*
  * @author michelewhite
@@ -28,14 +29,16 @@ public class OptionsMenuView extends Menu {
         {"2","Two Player"},
         {"X","Quit Options Menu"},
     };
-    
+
     public OptionsMenuView() {
         super(OptionsMenuView.menuItemsNumbPlayers);
     }
     
+    
     @Override
     public String executeCommands(Object object) {
         //String gameStatus = Game.PLAYING;
+          GameStatus gameStatus =    GameStatus.PLAYING;
         
         if (this.whatToDo.equalsIgnoreCase("Level")){
             try{
@@ -53,7 +56,7 @@ public class OptionsMenuView extends Menu {
                         this.setNumbLevel(3);
                         break;
                      case "X":
-                         return Game.EXIT;
+                         gameStatus= GameStatus.QUIT;
             }
             }
             catch (MenuException error) {
@@ -73,7 +76,7 @@ public class OptionsMenuView extends Menu {
                    this.setNumbPlayers(2);
                    break;
                  case "X":case"x":
-                    return Game.EXIT;
+                   gameStatus= GameStatus.QUIT;
                 }
             }
             catch (MenuException error) {
@@ -85,39 +88,7 @@ public class OptionsMenuView extends Menu {
     }
     
 
-        private Game createGame(String gameType) {
-        Game game = null;
-        Player playerA = null;
-        Player playerB = null;
-        
-       if (gameType == null) {
-           new MemoryGameError().display("MainCommands - create: gameType is null");
-           return null;
-        }
-        
-        if (gameType.equals(Game.ONE_PLAYER_GAME)) {
-            game = new Game(Game.ONE_PLAYER_GAME);
-            playerA = new Player(Player.MAIN_USER);
-            playerA.name = "Player 1";
-        }
-        else if (gameType.equals(Game.TWO_PLAYER_GAME)) {
-            game = new Game(Game.TWO_PLAYER_GAME);
-            playerA = new Player(Player.MAIN_USER);
-            playerA.name = "Player 1";
-            playerB = new Player(Player.SECOND_USER);
-            playerB.name = "Player 2";
-
-        }
-
-        // save the two players created as the default players of the game
-        game.playerA = playerA;
-        game.playerB = playerB; 
-        
-        // set the game status to game not yet in playing mode
-        game.status = Game.NO_ACTIVE_GAME;
-        
-        return game;
-    } 
+       
     
     public String quitGame() {
         System.out.println("\n\tAre you sure you want to quit? (Y or N)");

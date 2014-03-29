@@ -9,6 +9,7 @@ package evamichele.memorygame.gamecreator;
 
 
 import evamichele.memorygame.control.MemoryGameError;
+import evamichele.memorygame.enums.GameStatus;
 import evamichele.memorygame.interfaces.GetInput;
 import evamichele.memorygame.views.HelpMenuView;
 import java.lang.reflect.Array;
@@ -58,8 +59,9 @@ public class Game implements Serializable, GetInput {
     private boolean matched = false;
     private double startingPoints = 115.00;
     private int module;
+    private GameStatus gameStatus;
    
-    public Game(String ONE_PLAYER_GAME){
+    public Game(){
     
     }
     
@@ -73,7 +75,7 @@ public class Game implements Serializable, GetInput {
         if (noPlayers == 1) {module = 6;     
             if(gameLevel==1){
                 this.GameEasy();
-                System.out.println(" One PLayer Level 1");
+                //System.out.println(" One PLayer Level 1");
             }
             else if(gameLevel==2){
                 this.GameMedium();
@@ -100,7 +102,7 @@ public class Game implements Serializable, GetInput {
             }
         }
     }
-    
+  
     public void GameEasy(){
         
         words = new String []{"RED","RED","ORANGE","ORANGE","YELLOW","YELLOW","GREEN","GREEN","BLUE","BLUE"};
@@ -112,7 +114,8 @@ public class Game implements Serializable, GetInput {
         shuffle();// I don't know if thos are necessary
         setCells ();
         printCells();
-        playGame();// this is  not  used 
+        playGame();
+       // cOntinue();// this is  not  used 
          
     }
     
@@ -127,7 +130,7 @@ public class Game implements Serializable, GetInput {
         shuffle();
         setCells ();
         printCells();
-        playGame();
+       // playGame();
       
     }
     public void GameHard(){
@@ -141,17 +144,19 @@ public class Game implements Serializable, GetInput {
         shuffle();
         setCells ();
         printCells();
-        playGame();
+       // playGame();
       
     }
     
     public void playGame(){
         choosePairOfCards();
+        //cOntinue();
         
     }
     
     public void choosePairOfCards(){
         int row1, col1, row2, col2;
+          try{
         System.out.println();
         System.out.println("Enter the number on the card.");
         System.out.print("First Card Choice?>");
@@ -159,34 +164,82 @@ public class Game implements Serializable, GetInput {
         row1=cardChoice1/module;
         col1=cardChoice1%module;
         board[row1][col1].setShowingStatus();
-        System.out.print("Second CardView Choice?>");
+        
         System.out.print("\n");
+        System.out.print("Second CardView Choice?>");
         cardChoice2 =getInputAsInt();
         row2=cardChoice2/module ;
         col2=cardChoice2%module;
         board[row2][col2].setShowingStatus();
-       
+          
         System.out.print('\u000C'); // Clear the screen
         printCells();
         matchedCards(row1, col1, row2, col2);
         
-    }
+          }
+        
     
-        // check the card to see if the "cards" match
-        // if they don't call each card's setShowingStatus to "flip" them
+    catch (ArrayIndexOutOfBoundsException e) {
+         System.out.println("Array is out of Bounds"+e);
+      
+      }
+}
+
     public void matchedCards(int row1, int col1, int row2, int col2){
-        if(board[row1][col1].back == board[row2][col2].back){
+    	if(board[row1][col1].back == board[row2][col2].back){
             matched = true;
             board[row1][col1].matched = true;
             board[row2][col2].matched = true;
-            System.out.println("You made a match!"); // cards stay flipped over for duration of the game
-            playGame();
-        }
-        else 
+            System.out.println("You made a match!");
+            continueGame();// cards stay flipped over for duration of the game
+            //playGame();
+        }else{
             board[row1][col1].setShowingStatus();
             board[row2][col2].setShowingStatus();
-            playGame();
-   }
+            System.out.println("No match!");
+            continueGame();
+            //playGame();
+        }
+    }
+            public void continueGame(){  
+            System.out.println("want to continue?Y or N");
+              Scanner inFile = new Scanner(System.in);
+              String answer = inFile.next().trim().toUpperCase();
+                     if (answer.equals("N")) {
+
+                        System.out.println("You are now Leaving the game");
+                     gameStatus= GameStatus.EXIT;
+                     }
+                     else {
+                     System.out.println("You are now playing the game again");
+                     playGame();}
+                     }
+            
+        private void getWinningScore(int gameMove, boolean cards){
+        
+        int score= (int) (startingPoints)-gameMove;// cast double to int
+        if ((cards==true)&&(gameMove==15)){
+            System.out.println("you win perfect score!: " +score+" points\n");
+        }
+        else if  ((cards==true) && (gameMove<115)){
+            System.out.println("you win  "+score+" points\n");
+        }        
+        else if((cards==false) && (gameMove==115)){
+            System.out.println("you loose! "+ score+" points\n");
+        }
+        else if((cards==true) && (gameMove<=0)){
+            System.out.println("invalid input\n");
+        }
+        else if((cards==false) && (gameMove>115)){
+            System.out.println("invalid input\n");
+        }            
+    }
+          
+        
+
+                
+        
+   
    
    public void setCells (){
        card = 0;//the front of the card
@@ -227,6 +280,7 @@ public class Game implements Serializable, GetInput {
     public String getInputAsString(){
         return getInput.nextLine();
     }
+    
     
 }
 

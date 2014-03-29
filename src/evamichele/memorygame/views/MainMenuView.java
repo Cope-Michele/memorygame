@@ -8,6 +8,8 @@ import evamichele.memorygame.control.MainMenuControl;
 import evamichele.memorygame.control.Memorygame;
 import evamichele.memorygame.control.Menu;
 import evamichele.memorygame.exceptions.MenuException;
+import evamichele.memorygame.enums.GameStatus;
+import evamichele.memorygame.gamecreator.Player;
 
 /**
  * @author Eva
@@ -20,15 +22,15 @@ public class MainMenuView extends Menu {  //this class has a tight cohesion
     private String command;
     
     private static final String[][] menuItems = {
-        {"N", "Enter player names"},
-        {"G", "Game Menu options"},
+       // {"N", "Enter player names"},
+        {"G", "Play Game"},
         {"H", "Help"},
         {"S", "Display Statistics"},
         {"X", "Exit Memory Game"},
     }; 
     
      MainMenuControl mainMenuControl=new MainMenuControl();
-    // OptionsMenuView optionMenuView= new OptionsMenuView();
+
       
    
   
@@ -41,7 +43,7 @@ public class MainMenuView extends Menu {  //this class has a tight cohesion
     @Override    
     public String executeCommands(Object object) throws MenuException{
        
-          String gameStatus = Game.PLAYING;
+          GameStatus gameStatus =    GameStatus.PLAYING;
    
           do {
               try { 
@@ -49,9 +51,7 @@ public class MainMenuView extends Menu {  //this class has a tight cohesion
            
             String command = this.getCommand();
             switch (command) {
-                case "N": case "n":
-                    this.mainMenuControl.createPlayerList();    
-                    break;
+                
                 case "G":case "m":
                     // get number of players
                     OptionsMenuView optionMenu = new OptionsMenuView();
@@ -63,10 +63,11 @@ public class MainMenuView extends Menu {  //this class has a tight cohesion
                     optionMenu.executeCommands(null);
        
                     // play the game.
-                    Game game = new Game("ONE_PLAYER");
+                    Game game = new Game();
                     game.startGame(optionMenu.getNumbPlayers(), optionMenu.getNumbLevel());
-                    GameMenuView gameMenu = new GameMenuView();
-                    gameMenu.executeCommands(game);
+                    Player statistic = new Player();
+                    statistic.getWins();
+                                       
                     break;
                 case "H":case"h":
                     HelpMenuView helpMenu = Memorygame.getHelpMenu();
@@ -76,14 +77,14 @@ public class MainMenuView extends Menu {  //this class has a tight cohesion
                     this.mainMenuControl.displayStatistics();
                     break;
                 case "X":case"x":
-                    return Game.EXIT;              
+                     gameStatus= GameStatus.EXIT;            
                  }
             }
             catch (MenuException error) {
                 System.out.println("\n" + error.getMessage());
             }
             
-      } while (!gameStatus.equals(Game.EXIT));
+     } while (gameStatus != GameStatus.EXIT);
 
         return Game.EXIT;
     }

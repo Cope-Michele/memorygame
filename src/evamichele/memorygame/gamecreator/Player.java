@@ -6,8 +6,9 @@
 
 package evamichele.memorygame.gamecreator;
 
+import evamichele.memorygame.enums.GameStatus;
 import evamichele.memorygame.interfaces.GetInput;
-import evamichele.memorygame.control.MemoryGameError;
+//import evamichele.memorygame.control.MemoryGameError;
 import java.io.Serializable;
 import java.util.Scanner;
 /**
@@ -16,14 +17,11 @@ import java.util.Scanner;
  * used to mark a player on the board in Monopoly
  */
 
-// Eva's individual assignment lesson 3
-// Paired Programming Assignment Lesson 8
 public class Player implements Serializable, GetInput{
     
     public static final String MAIN_USER = "USER_ONE";
     public static final String SECOND_USER = "USER_TWO";
     public String name;
-    private String age;
     private boolean Cards;    
     private int gameMove;
     private String playerType;
@@ -32,6 +30,7 @@ public class Player implements Serializable, GetInput{
     private long ties = 0;
     private final double startingPoints = 115.00;
     private Scanner getInput;
+    private GameStatus gameStatus;
     
     public Player(){
         getInput = new Scanner(System.in);
@@ -39,18 +38,16 @@ public class Player implements Serializable, GetInput{
         //this.calculateBestTime(55.55,235.55);
         //this.getWinningScore(gameMove, Cards);
     }
+     public int getGameMove() {
+        return gameMove;
+    }
+
     
     public Player (String userType){
         
     }
     
-    public String getAge(){
-        System.out.println("Enter the number on the card.");
-        System.out.print("First Card Choice?>");
-        age =getInputAsString();
-        return age;
-    }
-    
+   
     public String getName() {
         return name;
     }
@@ -59,9 +56,6 @@ public class Player implements Serializable, GetInput{
         this.name = name;
     }
 
-    public int getGameMove() {
-        return gameMove;
-    }
 
     public void setGameMove(int gameMove) {
         this.gameMove = gameMove;
@@ -76,6 +70,8 @@ public class Player implements Serializable, GetInput{
     }
 
     public long getWins() {
+     System.out.println("you win mostly, you score will be here");
+     //gameStatus = GameStatus.EXIT;
         return wins;
     }
 
@@ -92,6 +88,7 @@ public class Player implements Serializable, GetInput{
     }
 
     public long getTies() {
+        
         return ties;
     }
 
@@ -103,34 +100,12 @@ public class Player implements Serializable, GetInput{
         return getInput.nextLine();
     }
     
-    // Paired Programming Assignment
-    private void calculateBestTime(double recordBest, double newTime){
-        int secondsBehind;
-        int secondsAhead;
+    private void getDisplayScore(){
+    System.out.println("you win mostly");
+     gameStatus = GameStatus.EXIT;
     
-        if(((recordBest <= 0)&&(newTime <= 0))||(newTime <= 0)) 
-            System.out.println("Invalid Time. \n");
-        else if (recordBest == 0) {
-            System.out.println(+newTime + " Game Time \n");
-            System.out.println("New Record!");
-        }
-        else if (recordBest < newTime) {
-            secondsBehind = (int) (newTime - recordBest);
-            System.out.println(+newTime + " Game Time \n");
-            System.out.println(+ secondsBehind+ " seconds behind the current record time. \n");
-        } 
-        else if (recordBest > newTime) {
-            secondsAhead = (int) (recordBest - newTime);
-            System.out.println(+newTime + " Game Time \n");
-            System.out.println("New Record! " +secondsAhead+ " seconds ahead of previous record time. \n");
-        }
-        else if (recordBest == newTime) {
-            System.out.println(+newTime + " Game Time \n");
-            System.out.println("Tied Game Record! \n");
-        }
-        
     }
-    
+  
     private void getWinningScore(int gameMove, boolean cards){
         
         int score= (int) (startingPoints)-gameMove;// cast double to int
@@ -150,8 +125,9 @@ public class Player implements Serializable, GetInput{
             System.out.println("invalid input\n");
         }            
     }
+}
         
-        //Michele's Week 6 individual Assignment (collects and totals a players points)
+ /*       //Michele's Week 6 individual Assignment (collects and totals a players points)
     private void getTotalPoints() {    
         int points[] = {100, 115, 89, 60, 77, 26, 115};
         int sum = 0;
@@ -165,4 +141,4 @@ public class Player implements Serializable, GetInput{
             + "played yet! Play a game of Memory first to view your statistics");
         }
     }
-}
+}*/

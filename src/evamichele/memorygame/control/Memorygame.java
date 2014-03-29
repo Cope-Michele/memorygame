@@ -22,7 +22,7 @@ public class Memorygame {
     private static final HelpMenuView helpMenu = new HelpMenuView();
     private static final OptionsMenuView optionMenu = new OptionsMenuView();
     
-    private static Player[] playerList;
+//    private static Player[] playerList;
     private static String name;
     private final static String instructions = "\n\t______________________________________________________________________\n"
                         + "\n\tMemory is the name of this game!"
@@ -30,6 +30,10 @@ public class Memorygame {
                         + "\n\teach card with its \"twin\" when the board is clear the game is over."
                         + "\n\tGood Luck!"
                         + "\n\t______________________________________________________________________";
+
+    static void setPlayerList(Player[] playerList) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     public Memorygame(){
     }
     public static Scanner getInputFile(){//creating Singleton
@@ -59,33 +63,17 @@ public class Memorygame {
         catch (MenuException error) {
                 System.out.println("\n" + error.getMessage());
                 }
+            
           
-        // get number of players
-        OptionsMenuView optionMenu = new OptionsMenuView();
-        optionMenu.setWhatToDo("Player");
-        optionMenu.executeCommands(null);
-        
-        // get the level
-        optionMenu.setWhatToDo("Level");
-        optionMenu.executeCommands(null);
        
-        // play the game. (Need to move this to the Game class)
-        Game game = new Game("ONE_PLAYER");
-        game.startGame(optionMenu.getNumbPlayers(), optionMenu.getNumbLevel()); 
-        
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.executeCommands(null);
-        
-        try {
-            mainMenu.executeCommands(null);
-        }
-        catch (MenuException error) {
-                System.out.println("\n" + error.getMessage());
-                }
+    
         finally{
+           
         Memorygame.inFile.close();
         }
+           
     }
+    
   
     
     public static void getCommand() {
@@ -99,8 +87,25 @@ public class Memorygame {
         System.out.println(Memorygame.instructions);
     }
    
-    public static void setPlayerList(Player[] playerList) {
+   /* public static void setPlayerList(Player[] playerList) {
         Memorygame.playerList = playerList;
-    }    
+    } 
+    
+    
+    /* // get number of players
+        OptionsMenuView optionMenu = new OptionsMenuView();
+        optionMenu.setWhatToDo("Player");
+        optionMenu.executeCommands(null);
+        
+        // get the level
+        optionMenu.setWhatToDo("Level");
+        optionMenu.executeCommands(null);
+       
+        // play the game. (Need to move this to the Game class)
+        Game game = new Game();
+        game.startGame(optionMenu.getNumbPlayers(), optionMenu.getNumbLevel()); 
+        
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.executeCommands(null);*/   
      
 }
