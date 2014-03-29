@@ -11,8 +11,7 @@ package evamichele.memorygame.enums;
  * @author michelewhite
  */
 public enum ErrorType {
-    ERROR1 ("You cannot change the board size once you have started a game."
-            + "Start a new game to choose a different board size."),
+    ERROR1 ("You can't pick the same exact card... \n Please Try again"),
     
     ERROR2 ("You must enter 2 different card numbers, "
               + "or a \"Q\" to quit. Try again."),
@@ -35,10 +34,11 @@ public enum ErrorType {
     
     ERROR10 ("Enter a non-blank character for the player's marker."),
     
-    ERROR11 ("Both players can not use the same character for a marker."),
+    ERROR11 ("invalid number of players specified."
+                    + "Please select either a 1 or 2 player game."),
     
-    ERROR12 ("There is no active game. You must start a new game before "
-              + "you can take a turn"), 
+    ERROR12 ("Two Player game is not currently available,"
+              + "please choose a one player game"), 
     
     ERROR13 ("The number of rows must be between 3 - 9 and the "
               + "number of columns must be between 3 - 9 "),

@@ -63,19 +63,12 @@ public class Memorygame {
         catch (MenuException error) {
                 System.out.println("\n" + error.getMessage());
                 }
-            
-          
-       
-    
         finally{
-           
         Memorygame.inFile.close();
         }
            
     }
-    
-  
-    
+   
     public static void getCommand() {
         Scanner inFile=Memorygame.getInputFile();
         System.out.println("Enter your name: ");

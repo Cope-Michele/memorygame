@@ -4,7 +4,7 @@ package evamichele.memorygame.exceptions;
  *
  * @author michelewhite
  */
-public class MenuException extends Exception{
+public class MenuException extends Exception {
     
         public MenuException() {
     }

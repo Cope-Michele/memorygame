@@ -9,7 +9,9 @@ package evamichele.memorygame.gamecreator;
 
 
 import evamichele.memorygame.control.MemoryGameError;
+import evamichele.memorygame.enums.ErrorType;
 import evamichele.memorygame.enums.GameStatus;
+import evamichele.memorygame.exceptions.GameException;
 import evamichele.memorygame.interfaces.GetInput;
 import evamichele.memorygame.views.HelpMenuView;
 import java.lang.reflect.Array;
@@ -65,11 +67,9 @@ public class Game implements Serializable, GetInput {
     
     }
     
-    public void startGame(int noPlayers,int gameLevel){         
+    public void startGame(int noPlayers,int gameLevel) throws GameException{         
         if (noPlayers != 1  &&  noPlayers != 2) {
-            new MemoryGameError().display("invalid number of players specified."
-                    + "Please select either a 1 or 2 player game.");
-            return;
+            throw new GameException(ErrorType.ERROR11.getMessage());
         }
         
         if (noPlayers == 1) {module = 6;     
@@ -94,10 +94,9 @@ public class Game implements Serializable, GetInput {
             }    
         }
         
-      /*  if (noPlayers ==2) {
-             System.out.println(" Game for two player not available Please try for one player");
-          
-        }*/
+        if (noPlayers ==2) {
+             throw new GameException(ErrorType.ERROR11.getMessage());
+        }
     }
   
     public void GameEasy(){
@@ -145,13 +144,13 @@ public class Game implements Serializable, GetInput {
       
     }
     
-    public void playGame(){
+    public void playGame() throws GameException{
         choosePairOfCards();
         //cOntinue();
         
     }
     
-    public void choosePairOfCards(){
+    public void choosePairOfCards() throws GameException{
         int row1, col1, row2, col2;
           try{
         System.out.println();
@@ -172,15 +171,14 @@ public class Game implements Serializable, GetInput {
         
         if (cardChoice1 == cardChoice2){
             System.out.print("\n");
-        	System.out.println("You can't pick the same exact card... \n Try again");
-        	playGame();
-        }
-          
+        	throw new GameException(ErrorType.ERROR1.getMessage());
+            }
+        playGame();  
         System.out.print('\u000C'); // Clear the screen
         printCells();
         matchedCards(row1, col1, row2, col2);
         
-          }
+            }
         
  
          catch (ArrayIndexOutOfBoundsException e) {
