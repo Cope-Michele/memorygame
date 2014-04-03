@@ -186,48 +186,75 @@
         </Container>
         <Component class="java.awt.Button" name="button1">
           <Properties>
-            <Property name="label" type="java.lang.String" value="button1"/>
+            <Property name="label" type="java.lang.String" value="1"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="java.awt.Button" name="button2">
           <Properties>
-            <Property name="label" type="java.lang.String" value="button2"/>
+            <Property name="label" type="java.lang.String" value="2"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="java.awt.Button" name="button3">
           <Properties>
-            <Property name="label" type="java.lang.String" value="button3"/>
+            <Property name="label" type="java.lang.String" value="3"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button3ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="java.awt.Button" name="button4">
           <Properties>
-            <Property name="label" type="java.lang.String" value="button4"/>
+            <Property name="label" type="java.lang.String" value="4"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button4ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="java.awt.Button" name="button5">
           <Properties>
-            <Property name="label" type="java.lang.String" value="button5"/>
+            <Property name="label" type="java.lang.String" value="5"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button5ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="java.awt.Button" name="button6">
           <Properties>
-            <Property name="label" type="java.lang.String" value="button6"/>
+            <Property name="label" type="java.lang.String" value="6"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button6ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="java.awt.Button" name="button7">
           <Properties>
-            <Property name="label" type="java.lang.String" value="button7"/>
+            <Property name="label" type="java.lang.String" value="7"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button7ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="java.awt.Button" name="button8">
           <Properties>
-            <Property name="label" type="java.lang.String" value="button8"/>
+            <Property name="label" type="java.lang.String" value="8"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button8ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="java.awt.Button" name="button9">
           <Properties>
-            <Property name="label" type="java.lang.String" value="button9"/>
+            <Property name="label" type="java.lang.String" value="9"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button9ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
