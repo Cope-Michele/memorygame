@@ -6,11 +6,16 @@
 
 package evamichele.memorygame.frames;
 
+import evamichele.memorygame.control.Memorygame;
+import evamichele.memorygame.gamecreator.Game;
+import java.util.Scanner;
+
 /**
  *
  * @author Mpianatra
  */
 public class EnterPlayerNames extends javax.swing.JFrame {
+    private Game game = null;
 
     /**
      * Creates new form EnterPlayerNames
@@ -30,8 +35,8 @@ public class EnterPlayerNames extends javax.swing.JFrame {
 
         jName = new javax.swing.JPanel();
         jEnternameLabel = new javax.swing.JLabel();
-        jTextFieldName = new javax.swing.JTextField();
-        jbContinue = new javax.swing.JButton();
+        jPlayerName = new javax.swing.JTextField();
+        jContinueButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Enter Player Name");
@@ -42,13 +47,12 @@ public class EnterPlayerNames extends javax.swing.JFrame {
         jEnternameLabel.setForeground(new java.awt.Color(0, 153, 153));
         jEnternameLabel.setText("Enter your Name below:");
 
-        jTextFieldName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNameActionPerformed(evt);
+        jContinueButton.setText("Continue");
+        jContinueButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jContinueButtonMouseClicked(evt);
             }
         });
-
-        jbContinue.setText("Continue");
 
         javax.swing.GroupLayout jNameLayout = new javax.swing.GroupLayout(jName);
         jName.setLayout(jNameLayout);
@@ -60,11 +64,11 @@ public class EnterPlayerNames extends javax.swing.JFrame {
                         .addGap(93, 93, 93)
                         .addComponent(jEnternameLabel))
                     .addGroup(jNameLayout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(113, 113, 113)
+                        .addComponent(jPlayerName, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jNameLayout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(jbContinue)))
+                        .addGap(142, 142, 142)
+                        .addComponent(jContinueButton)))
                 .addContainerGap(86, Short.MAX_VALUE))
         );
         jNameLayout.setVerticalGroup(
@@ -72,12 +76,14 @@ public class EnterPlayerNames extends javax.swing.JFrame {
             .addGroup(jNameLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jEnternameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
-                .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(jbContinue)
+                .addGap(33, 33, 33)
+                .addComponent(jPlayerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
+                .addComponent(jContinueButton)
                 .addContainerGap(97, Short.MAX_VALUE))
         );
+
+        jPlayerName.getAccessibleContext().setAccessibleParent(jPlayerName);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,53 +105,24 @@ public class EnterPlayerNames extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNameActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EnterPlayerNames.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EnterPlayerNames.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EnterPlayerNames.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EnterPlayerNames.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new EnterPlayerNames().setVisible(true);
-            }
-        });
+    private void jContinueButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jContinueButtonMouseClicked
+        this.continueToGame();
+    }//GEN-LAST:event_jContinueButtonMouseClicked
+   private void continueToGame() {
+        String playerName = this.jPlayerName.getName();// will be used
+        MainMenuJFrame mainMenuFrame = new MainMenuJFrame();
+        mainMenuFrame.setVisible(true);
+        this.dispose();
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jContinueButton;
     private javax.swing.JLabel jEnternameLabel;
     private javax.swing.JPanel jName;
-    private javax.swing.JTextField jTextFieldName;
-    private javax.swing.JButton jbContinue;
+    private javax.swing.JTextField jPlayerName;
     // End of variables declaration//GEN-END:variables
 
     void initializeForm() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
