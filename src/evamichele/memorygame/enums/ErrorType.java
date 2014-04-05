@@ -19,7 +19,7 @@ public enum ErrorType {
     ERROR3 ("Invalid command. Please enter a valid command."),
     
     ERROR4 ("You must start a new game first."),
-    
+        
     ERROR5 ("You must enter a name or enter a \"Q\" to quit. Try again."),
     
     ERROR6 ("The game parameter is null."),

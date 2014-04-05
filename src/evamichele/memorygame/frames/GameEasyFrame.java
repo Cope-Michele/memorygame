@@ -63,6 +63,11 @@ public class GameEasyFrame extends javax.swing.JFrame {
         jNewGame.setText("New Game");
 
         jHelp.setText("Help");
+        jHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jHelpActionPerformed(evt);
+            }
+        });
 
         jExit.setText("Exit");
         jExit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -172,6 +177,11 @@ public class GameEasyFrame extends javax.swing.JFrame {
     private void jExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jExitMouseClicked
        this.dispose();
     }//GEN-LAST:event_jExitMouseClicked
+
+    private void jHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jHelpActionPerformed
+        HelpJFrame helpFrame = new HelpJFrame();
+        helpFrame.setVisible(true);
+    }//GEN-LAST:event_jHelpActionPerformed
 
     /**
      * @param args the command line arguments

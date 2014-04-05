@@ -6,14 +6,17 @@
 
 package evamichele.memorygame.frames;
 
-import evamichele.memorygame.views.HelpMenuView;
+import evamichele.memorygame.control.HelpMenuControl;
+import evamichele.memorygame.enums.HelpType;
+import evamichele.memorygame.exceptions.MemorygameException;
+
 
 /**
  *
  * @author Mpianatra
  */
 public class HelpJFrame extends javax.swing.JFrame {
-    HelpMenuView helpMenuView = new HelpMenuView();
+  HelpMenuControl helpCommands = new HelpMenuControl();
     
 
     /**
@@ -23,6 +26,22 @@ public class HelpJFrame extends javax.swing.JFrame {
     public HelpJFrame() {
         initComponents();
         setLocationRelativeTo(null);
+    }
+   
+    public HelpMenuControl getHelpCommands() {
+        return helpCommands;
+    }
+
+
+    
+    private void displayHelpText(HelpType command) {
+        try {
+            String helpText = this.helpCommands.getHelpText(command);
+            this.jTextArea1.setText(helpText);
+        } catch (MemorygameException ex) {
+            this.jTextArea1.setText(ex.getMessage());
+        }
+        
     }
 
     /**
@@ -38,9 +57,10 @@ public class HelpJFrame extends javax.swing.JFrame {
         jHelpLabel = new javax.swing.JLabel();
         jObjectiveButton = new javax.swing.JButton();
         jOnePlayerButton = new javax.swing.JButton();
-        jQuitButton = new javax.swing.JButton();
+        jBexit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jTwoPlayerButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,17 +80,35 @@ public class HelpJFrame extends javax.swing.JFrame {
 
         jOnePlayerButton.setText("One Player  Help");
         jOnePlayerButton.setToolTipText("");
-        jOnePlayerButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jOnePlayerButtonActionPerformed(evt);
+        jOnePlayerButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jOnePlayerButtonMouseClicked(evt);
             }
         });
 
-        jQuitButton.setText("Return");
+        jBexit.setText("Return");
+        jBexit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBexitMouseClicked(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
+        jTextArea1.setWrapStyleWord(true);
+        jTextArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTextArea1.setFocusable(false);
+        jTextArea1.setPreferredSize(new java.awt.Dimension(170, 100));
         jScrollPane1.setViewportView(jTextArea1);
+
+        jTwoPlayerButton.setText("Two Player");
+        jTwoPlayerButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTwoPlayerButtonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jHelpPanelLayout = new javax.swing.GroupLayout(jHelpPanel);
         jHelpPanel.setLayout(jHelpPanelLayout);
@@ -81,10 +119,11 @@ public class HelpJFrame extends javax.swing.JFrame {
                 .addComponent(jHelpLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jHelpPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jHelpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jObjectiveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jOnePlayerButton)
-                    .addComponent(jQuitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jHelpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jObjectiveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jOnePlayerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBexit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTwoPlayerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
                 .addContainerGap())
@@ -101,8 +140,10 @@ public class HelpJFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jOnePlayerButton)
                         .addGap(18, 18, 18)
-                        .addComponent(jQuitButton)
-                        .addGap(0, 123, Short.MAX_VALUE))
+                        .addComponent(jTwoPlayerButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBexit)
+                        .addGap(0, 82, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );
@@ -130,24 +171,32 @@ public class HelpJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jOnePlayerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jOnePlayerButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jOnePlayerButtonActionPerformed
-
     private void jObjectiveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jObjectiveButtonMouseClicked
-        // TODO add your handling code here:
+        displayHelpText(HelpType.OBJECTIVE);
     }//GEN-LAST:event_jObjectiveButtonMouseClicked
+
+    private void jOnePlayerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jOnePlayerButtonMouseClicked
+    displayHelpText(HelpType.ONE_PERSON_GAME);
+    }//GEN-LAST:event_jOnePlayerButtonMouseClicked
+
+    private void jTwoPlayerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTwoPlayerButtonMouseClicked
+  displayHelpText(HelpType.TWO_PERSON_GAME);
+    }//GEN-LAST:event_jTwoPlayerButtonMouseClicked
+
+    private void jBexitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBexitMouseClicked
+  this.dispose();
+    }//GEN-LAST:event_jBexitMouseClicked
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+ /*   public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+ /*       try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -166,20 +215,22 @@ public class HelpJFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+  /*      java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new HelpJFrame().setVisible(true);
             }
         });
-    }
+    }*/
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBexit;
     private javax.swing.JLabel jHelpLabel;
     private javax.swing.JPanel jHelpPanel;
     private javax.swing.JButton jObjectiveButton;
     private javax.swing.JButton jOnePlayerButton;
-    private javax.swing.JButton jQuitButton;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton jTwoPlayerButton;
     // End of variables declaration//GEN-END:variables
 }
