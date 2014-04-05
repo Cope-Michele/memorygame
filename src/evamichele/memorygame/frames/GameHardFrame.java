@@ -88,6 +88,11 @@ public class GameHardFrame extends javax.swing.JFrame {
         jGameLabel.setText("Memory Game");
 
         jNewGame.setText("New Game");
+        jNewGame.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jNewGameMouseClicked(evt);
+            }
+        });
 
         jHelp.setText("Help");
         jHelp.addActionListener(new java.awt.event.ActionListener() {
@@ -324,6 +329,12 @@ public class GameHardFrame extends javax.swing.JFrame {
         HelpJFrame helpFrame = new HelpJFrame();
         helpFrame.setVisible(true);
     }//GEN-LAST:event_jHelpActionPerformed
+
+    private void jNewGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNewGameMouseClicked
+      GameMediumFrame gameMediumFrame = new GameMediumFrame();
+      gameMediumFrame.setVisible(true);
+        this.dispose(); 
+    }//GEN-LAST:event_jNewGameMouseClicked
 
     /**
      * @param args the command line arguments

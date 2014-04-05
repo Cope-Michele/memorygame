@@ -53,6 +53,16 @@ public class EnterPlayerNames extends javax.swing.JFrame {
                 jContinueButtonMouseClicked(evt);
             }
         });
+        jContinueButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jContinueButtonActionPerformed(evt);
+            }
+        });
+        jContinueButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jContinueButtonKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jNameLayout = new javax.swing.GroupLayout(jName);
         jName.setLayout(jNameLayout);
@@ -108,6 +118,14 @@ public class EnterPlayerNames extends javax.swing.JFrame {
     private void jContinueButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jContinueButtonMouseClicked
         this.continueToGame();
     }//GEN-LAST:event_jContinueButtonMouseClicked
+
+    private void jContinueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jContinueButtonActionPerformed
+        this.continueToGame();
+    }//GEN-LAST:event_jContinueButtonActionPerformed
+
+    private void jContinueButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jContinueButtonKeyPressed
+         this.continueToGame();
+    }//GEN-LAST:event_jContinueButtonKeyPressed
    private void continueToGame() {
         String playerName = this.jPlayerName.getName();// will be used
         MainMenuJFrame mainMenuFrame = new MainMenuJFrame();
