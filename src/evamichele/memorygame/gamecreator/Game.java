@@ -111,9 +111,7 @@ public class Game implements Serializable, GetInput {
             
         shuffle();
         setCells ();
-        printCells();
-        playGame();
-             
+
     }
     
     public void GameMedium(){ 
@@ -126,9 +124,7 @@ public class Game implements Serializable, GetInput {
       
         shuffle();
         setCells ();
-        printCells();
-        playGame();
-      
+        
     }
     public void GameHard(){
         
@@ -140,8 +136,6 @@ public class Game implements Serializable, GetInput {
             
         shuffle();
         setCells ();
-        printCells();
-        playGame();
       
     }
     
@@ -286,6 +280,10 @@ public class Game implements Serializable, GetInput {
 
     public String getInputAsString(){
         return getInput.nextLine();
+    }
+    
+    public Card[][] getBoard(){
+        return board;
     }
 }
 

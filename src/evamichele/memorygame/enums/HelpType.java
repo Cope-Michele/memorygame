@@ -6,13 +6,13 @@ package evamichele.memorygame.enums;
 
 /**
  *
- * @author jacksonrkj
+ * @author eva
  */
 public enum HelpType {
-        OBJECTIVE ("  The objective of the game is to be the first player to mark three "
-                + "squares vertically, horizontally or diagonally. \n\n  Each player takes "
-                + "turns placing their marker in one of the locations on the "
-                + "board. \n\n  The first player to get \"three-in-a-row\" is the winner."),
+        OBJECTIVE ("  The objective of the game is match each card to its twin card "
+                + "hidden within the card grid. \n\n  Each player takes "
+                + "turns flipping over two cards at a time. "
+                + "\n\n  The player with the most matches at the end of the game wins."),
         
              
         ONE_PERSON_GAME ( "    You have 115 points.\n\n"

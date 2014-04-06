@@ -14,7 +14,7 @@ import evamichele.memorygame.exceptions.MemorygameException;
 
 /**
  *
- * @author jacksonrkj
+ * @author eva
  */
 public class HelpMenuControl {
     

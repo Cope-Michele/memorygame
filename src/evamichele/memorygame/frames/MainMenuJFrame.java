@@ -6,6 +6,8 @@
 
 package evamichele.memorygame.frames;
 
+import evamichele.memorygame.gamecreator.Game;
+
 /**
  *
  * @author Mpianatra
@@ -141,20 +143,25 @@ public class MainMenuJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-       GameEasyFrame gameEasyFrame = new GameEasyFrame();
-      gameEasyFrame.setVisible(true);
+       // TODO tell the controller to create the game
+        // get the game from the controller and pass into the new game frame
+        Game game = new Game();
+        GameEasyFrame gameEasyFrame = new GameEasyFrame(game);
+        gameEasyFrame.setVisible(true);
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-       GameMediumFrame gameMediumFrame = new GameMediumFrame();
-      gameMediumFrame.setVisible(true);
+        Game game = new Game();
+        GameMediumFrame gameMediumFrame = new GameMediumFrame(game);
+        gameMediumFrame.setVisible(true);
         this.dispose(); 
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
-       GameHardFrame gameHardFrame = new GameHardFrame();
-      gameHardFrame.setVisible(true);
+        Game game = new Game();
+        GameHardFrame gameHardFrame = new GameHardFrame(game);
+        gameHardFrame.setVisible(true);
         this.dispose(); 
     }//GEN-LAST:event_jButton5MouseClicked
 
