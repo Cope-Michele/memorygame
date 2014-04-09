@@ -261,6 +261,7 @@ public class GameEasyFrame extends javax.swing.JFrame {
 
     private void card5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card5ActionPerformed
         card5.setText(cards[1][1].getBack());
+        // card5.setText(Integer.toString(cards[1][1].getFront()));
     }//GEN-LAST:event_card5ActionPerformed
 
     private void card9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card9ActionPerformed
