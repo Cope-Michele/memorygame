@@ -136,7 +136,7 @@ public class Game implements Serializable, GetInput {
             
         shuffle();
         setCells ();
-      
+        
     }
     
     public void playGame(){
