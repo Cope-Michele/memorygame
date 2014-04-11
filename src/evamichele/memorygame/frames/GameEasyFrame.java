@@ -40,20 +40,89 @@ public class GameEasyFrame extends javax.swing.JFrame {
     GameEasyFrame() {
         // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     public void flipCard(int row, int col){
         
         if (prevSelectedCardRow == -1 && prevSelectedCardCol == -1){
             prevSelectedCardRow = row;
             prevSelectedCardCol = col;
             cards[row][col].setShowing(true);
+            updateButtons();
         }
         else if ( prevSelectedCardRow != -1 && prevSelectedCardCol != -1){
             cards[row][col].setShowing(true);
+            updateButtons();
             this.game.matchedCards( cards[prevSelectedCardRow][prevSelectedCardCol], cards[row][col]);
+            scoreLabel.setText(Integer.toString(this.game.getScore()));
+            //update the score in the UI
             prevSelectedCardRow = -1;
             prevSelectedCardCol = -1;
         }        
+    }
+    
+    public void updateButtons() {
+        if ( cards[0][0].isShowing()){
+            card1.setText(cards[0][0].getBack());
+        }
+        else { 
+            card1.setText(Integer.toString(cards[0][0].getFront()));
+        }
+        
+        if ( cards[0][1].isShowing()){
+            card2.setText(cards[0][1].getBack());
+        }
+        else { 
+            card2.setText(Integer.toString(cards[0][1].getFront()));
+        } 
+        
+        if ( cards[0][2].isShowing()){
+            card3.setText(cards[0][2].getBack());
+        }
+        else { 
+            card3.setText(Integer.toString(cards[0][2].getFront()));
+        }
+        
+         if ( cards[1][0].isShowing()){
+            card4.setText(cards[1][0].getBack());
+        }
+        else { 
+            card4.setText(Integer.toString(cards[1][0].getFront()));
+        }
+         
+        if ( cards[1][1].isShowing()){
+            card5.setText(cards[1][1].getBack());
+        }
+        else { 
+            card5.setText(Integer.toString(cards[1][1].getFront()));
+        }
+        
+        if ( cards[1][2].isShowing()){
+            card6.setText(cards[1][2].getBack());
+        }
+        else { 
+            card6.setText(Integer.toString(cards[1][2].getFront()));
+        }
+        
+        if ( cards[2][0].isShowing()){
+            card7.setText(cards[2][0].getBack());
+        }
+        else { 
+            card7.setText(Integer.toString(cards[2][0].getFront()));
+        }
+        
+        if ( cards[2][1].isShowing()){
+            card8.setText(cards[2][1].getBack());
+        }
+        else { 
+            card8.setText(Integer.toString(cards[2][1].getFront()));
+        }
+        
+        if ( cards[2][2].isShowing()){
+            card9.setText(cards[2][2].getBack());
+        }
+        else { 
+            card9.setText(Integer.toString(cards[2][2].getFront()));
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -69,8 +138,6 @@ public class GameEasyFrame extends javax.swing.JFrame {
         jNewGame = new javax.swing.JButton();
         jHelp = new javax.swing.JButton();
         jExit = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         card1 = new javax.swing.JButton();
         card2 = new javax.swing.JButton();
         card3 = new javax.swing.JButton();
@@ -80,7 +147,8 @@ public class GameEasyFrame extends javax.swing.JFrame {
         card7 = new javax.swing.JButton();
         card8 = new javax.swing.JButton();
         card9 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        scoreLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,10 +178,6 @@ public class GameEasyFrame extends javax.swing.JFrame {
                 jExitMouseClicked(evt);
             }
         });
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
 
         card1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,50 +233,54 @@ public class GameEasyFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Score");
+        jLabel1.setText("Score:");
 
         javax.swing.GroupLayout jGamePanelLayout = new javax.swing.GroupLayout(jGamePanel);
         jGamePanel.setLayout(jGamePanelLayout);
         jGamePanelLayout.setHorizontalGroup(
             jGamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jGamePanelLayout.createSequentialGroup()
-                .addGroup(jGamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(90, 90, 90)
+                .addGroup(jGamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jGamePanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jGamePanelLayout.createSequentialGroup()
-                        .addGap(90, 90, 90)
                         .addGroup(jGamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jGamePanelLayout.createSequentialGroup()
-                                .addGap(58, 58, 58)
-                                .addComponent(jGameLabel))
+                                .addComponent(card1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(card2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(card3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jGamePanelLayout.createSequentialGroup()
-                                .addGroup(jGamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jGamePanelLayout.createSequentialGroup()
-                                        .addComponent(card1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(card2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(card3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jGamePanelLayout.createSequentialGroup()
-                                        .addComponent(card4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(card5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(card6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jGamePanelLayout.createSequentialGroup()
-                                        .addComponent(card7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(card8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(card9, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(card4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(card5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(card6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jGamePanelLayout.createSequentialGroup()
+                                .addComponent(card7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(card8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(card9, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jGamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jGamePanelLayout.createSequentialGroup()
                                 .addGap(110, 110, 110)
                                 .addGroup(jGamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jNewGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jHelp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addContainerGap(30, Short.MAX_VALUE))
+                                    .addComponent(jExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jGamePanelLayout.createSequentialGroup()
+                                .addGap(91, 91, 91)
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(scoreLabel)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jGamePanelLayout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(jGameLabel)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(61, 61, 61))
         );
         jGamePanelLayout.setVerticalGroup(
             jGamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,17 +304,16 @@ public class GameEasyFrame extends javax.swing.JFrame {
                             .addComponent(card9, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(card7, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jGamePanelLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                        .addGroup(jGamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(scoreLabel)
+                            .addComponent(jLabel1))
+                        .addGap(30, 30, 30)
                         .addComponent(jNewGame)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jHelp)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jExit)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -257,7 +324,7 @@ public class GameEasyFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jGamePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jGamePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -280,101 +347,38 @@ public class GameEasyFrame extends javax.swing.JFrame {
 
     private void card5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card5ActionPerformed
         flipCard(1,1);
-        
-        if ( cards[1][1].isShowing()){
-            card5.setText(cards[1][1].getBack());
-        }
-        else { 
-            card5.setText(Integer.toString(cards[1][1].getFront()));
-        }
     }//GEN-LAST:event_card5ActionPerformed
 
     private void card9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card9ActionPerformed
-        flipCard(2,2);
-        
-        if ( cards[2][2].isShowing()){
-            card9.setText(cards[2][2].getBack());
-        }
-        else { 
-            card9.setText(Integer.toString(cards[1][1].getFront()));
-        }
+        flipCard(2,2);     
     }//GEN-LAST:event_card9ActionPerformed
 
     private void card1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card1ActionPerformed
         flipCard(0,0);
-        
-        if ( cards[0][0].isShowing()){
-            card1.setText(cards[0][0].getBack());
-        }
-        else { 
-            card1.setText(Integer.toString(cards[0][0].getFront()));
-        }
     }//GEN-LAST:event_card1ActionPerformed
 
     private void card2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card2ActionPerformed
         flipCard(0,1);
-        
-        if ( cards[0][1].isShowing()){
-            card2.setText(cards[0][1].getBack());
-        }
-        else { 
-            card2.setText(Integer.toString(cards[0][1].getFront()));
-        }
     }//GEN-LAST:event_card2ActionPerformed
 
     private void card3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card3ActionPerformed
         flipCard(0,2);
-        
-        if ( cards[0][2].isShowing()){
-            card3.setText(cards[0][2].getBack());
-        }
-        else { 
-            card3.setText(Integer.toString(cards[0][2].getFront()));
-        }
     }//GEN-LAST:event_card3ActionPerformed
 
     private void card4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card4ActionPerformed
         flipCard(1,0);
-        
-        if ( cards[1][0].isShowing()){
-            card4.setText(cards[1][0].getBack());
-        }
-        else { 
-            card4.setText(Integer.toString(cards[1][0].getFront()));
-        }
     }//GEN-LAST:event_card4ActionPerformed
 
     private void card6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card6ActionPerformed
         flipCard(1,2);
-        
-        if ( cards[1][2].isShowing()){
-            card6.setText(cards[1][2].getBack());
-        }
-        else { 
-            card6.setText(Integer.toString(cards[1][2].getFront()));
-        }
     }//GEN-LAST:event_card6ActionPerformed
 
     private void card7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card7ActionPerformed
         flipCard(2,0);
-        
-        if ( cards[2][0].isShowing()){
-            card7.setText(cards[2][0].getBack());
-        }
-        else { 
-            card7.setText(Integer.toString(cards[2][0].getFront()));
-        }
     }//GEN-LAST:event_card7ActionPerformed
 
     private void card8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card8ActionPerformed
         flipCard(2,1);
-        
-        if ( cards[2][1].isShowing()){
-            card8.setText(cards[2][1].getBack());
-        }
-        else { 
-            card8.setText(Integer.toString(cards[2][1].getFront()));
-        }
     }//GEN-LAST:event_card8ActionPerformed
 
     /**
@@ -422,13 +426,12 @@ public class GameEasyFrame extends javax.swing.JFrame {
     private javax.swing.JButton card7;
     private javax.swing.JButton card8;
     private javax.swing.JButton card9;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jExit;
     private javax.swing.JLabel jGameLabel;
     private javax.swing.JPanel jGamePanel;
     private javax.swing.JButton jHelp;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jNewGame;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel scoreLabel;
     // End of variables declaration//GEN-END:variables
 }

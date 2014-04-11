@@ -52,10 +52,10 @@ super(GameMenuView.menuItems);
               String command = this.getCommand();
             switch (command) {
                 case "T":case"t":
-                    this.game.choosePairOfCards();
+                    //this.game.choosePairOfCards();
                     break;
                 case "D":case"d":
-                    this.game.printCells();
+                    //this.game.printCells();
                     break;
                 case "N":case"n":
                     this.mainMenuView.display();

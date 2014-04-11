@@ -61,7 +61,7 @@ public class Game implements Serializable, GetInput {
     private int cardChoice2;
     private int gameMove=0;// the player move
     private boolean matched = false;
-    private double startingPoints = 115.00;
+    private int score = 0;
     private int module;
     private GameStatus gameStatus;
    
@@ -139,108 +139,40 @@ public class Game implements Serializable, GetInput {
         
     }
     
-    public void playGame(){
-        choosePairOfCards();
-    }
-    
-    public void choosePairOfCards(){
-        int row1, col1, row2, col2;
-          try{
-        System.out.println();
-        System.out.println("Enter the number on the card.");
-        System.out.print("First Card Choice? >>");
-        cardChoice1 =getInputAsInt();
-        row1=cardChoice1/module;
-        col1=cardChoice1%module;
-        board[row1][col1].setShowingStatus();
-        
-        System.out.print("\n");
-        System.out.print("Second Card Choice? >>");
-        cardChoice2 =getInputAsInt();
-        row2=cardChoice2/module ;
-        col2=cardChoice2%module;
-        board[row2][col2].setShowingStatus();
-        int sum = 1/(cardChoice1 - cardChoice2);
-        
-        if (cardChoice1 == cardChoice2){
-            System.out.print("\n");
-        	System.out.println("You can't pick the same exact card... \n Try again");
-        	playGame();
-        }
-          
-        System.out.print('\u000C'); // Clear the screen
-        printCells();
-        //matchedCards(row1, col1, row2, col2);
-        
-          }
-        
- 
-         catch (ArrayIndexOutOfBoundsException e) {
-         System.out.println("Array is out of Bounds"+e);
-      
-      }
-          catch (ArithmeticException e) {
-               System.out.print(
-      "\n\t______________________________________________________________________\n"
-                     
-      + "\n You can't pick the same exact card... \n Try again"
-      +"\n\t______________________________________________________________________\n");
-         playGame();
-      }
-
-}
-
-    public void matchedCards(Card card1, Card card2){
+        public void matchedCards(Card card1, Card card2){
     	if(card1.back == card2.back){
             matched = true;
             card1.matched = true;
             card2.matched = true;
-            //continueGame();// cards stay flipped over for duration of the game
-            //playGame();
+            score += 10;
+            
         }else{
             card1.setShowing(false);
             card2.setShowing(false);
-            //continueGame();
-            //playGame();
+            score -= 1;
+
         }
     }
-
+    
+    public int getScore(){
+        return this.score;
+    }
+    
     public void continueGame(){ 
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.executeCommands(null);
-//            System.out.println("want to continue?Y or N");
-//              Scanner inFile = new Scanner(System.in);
-//              String answer = inFile.next().trim().toUpperCase();
-//                     if (answer.equals("N")) {
-//
-//                        System.out.println("You are now Leaving the game");
-//                     gameStatus= GameStatus.EXIT;
-//                     }
-//                     else {
-//                     System.out.println("You are now playing the game again");
-       //playGame();
-        }
-
-    private void getWinningScore(int gameMove, boolean cards){
-        
-        int score= (int) (startingPoints)-gameMove;// cast double to int
-        if ((cards==true)&&(gameMove==15)){
-            System.out.println("you win perfect score!: " +score+" points\n");
-        }
-        else if  ((cards==true) && (gameMove<115)){
-            System.out.println("you win  "+score+" points\n");
-        }        
-        else if((cards==false) && (gameMove==115)){
-            System.out.println("you loose! "+ score+" points\n");
-        }
-        else if((cards==true) && (gameMove<=0)){
-            System.out.println("invalid input\n");
-        }
-        else if((cards==false) && (gameMove>115)){
-            System.out.println("invalid input\n");
-        }            
     }
-   
+    
+        
+    public void shuffle(){
+        for(int a=0; a < words.length;a++);{
+            int pos = randomCard.nextInt(words.length);
+            String temp = words[card];
+            words[card] = words[pos];
+            words[pos] = temp;
+        }
+    }
+    
    public void setCells (){
        card = 0;//the front of the card
        for (int row=0; row<board.length;row++){
@@ -252,38 +184,114 @@ public class Game implements Serializable, GetInput {
            }
        }
    }
-   
-   public void printCells(){
-       for (int row=0; row<board.length;row++){
-           for (int col=0; col<board[0].length;col++){
-                board[row][col].showCard();
-            }
-       System.out.println();
-       }    
-   } 
-    
-        public void shuffle(){
-        for(int a=0; a < words.length;a++);{
-            int pos = randomCard.nextInt(words.length);
-            String temp = words[card];
-            words[card] = words[pos];
-            words[pos] = temp;
-        }
-    }
-
-    public int getInputAsInt(){
-        String temp = getInput.nextLine();
-        return Integer.parseInt(temp); 
-    }
-
-    public String getInputAsString(){
-        return getInput.nextLine();
-    }
-    
-    public Card[][] getBoard(){
+   public Card[][] getBoard(){
         return board;
     }
 }
+    
+//    public void playGame(){
+//        choosePairOfCards();
+//    }
+//    
+//    public void choosePairOfCards(){
+//        int row1, col1, row2, col2;
+//          try{
+//        System.out.println();
+//        System.out.println("Enter the number on the card.");
+//        System.out.print("First Card Choice? >>");
+//        cardChoice1 =getInputAsInt();
+//        row1=cardChoice1/module;
+//        col1=cardChoice1%module;
+//        board[row1][col1].setShowingStatus();
+//        
+//        System.out.print("\n");
+//        System.out.print("Second Card Choice? >>");
+//        cardChoice2 =getInputAsInt();
+//        row2=cardChoice2/module ;
+//        col2=cardChoice2%module;
+//        board[row2][col2].setShowingStatus();
+//        int sum = 1/(cardChoice1 - cardChoice2);
+//        
+//        if (cardChoice1 == cardChoice2){
+//            System.out.print("\n");
+//        	System.out.println("You can't pick the same exact card... \n Try again");
+//        	playGame();
+//        }
+//          
+//        System.out.print('\u000C'); // Clear the screen
+//        printCells();
+//        //matchedCards(row1, col1, row2, col2);
+//        
+//          }
+//        
+// 
+//         catch (ArrayIndexOutOfBoundsException e) {
+//         System.out.println("Array is out of Bounds"+e);
+//      
+//      }
+//          catch (ArithmeticException e) {
+//               System.out.print(
+//      "\n\t______________________________________________________________________\n"
+//                     
+//      + "\n You can't pick the same exact card... \n Try again"
+//      +"\n\t______________________________________________________________________\n");
+//         playGame();
+//      }
+//
+//}
+//            System.out.println("want to continue?Y or N");
+//              Scanner inFile = new Scanner(System.in);
+//              String answer = inFile.next().trim().toUpperCase();
+//                     if (answer.equals("N")) {
+//
+//                        System.out.println("You are now Leaving the game");
+//                     gameStatus= GameStatus.EXIT;
+//                     }
+//                     else {
+//                     System.out.println("You are now playing the game again");
+       //playGame();
+
+//    private void getWinningScore(int gameMove, boolean cards){
+//        
+//        int score= (int) (startingPoints)-gameMove;// cast double to int
+//        if ((cards==true)&&(gameMove==15)){
+//            System.out.println("you win perfect score!: " +score+" points\n");
+//        }
+//        else if  ((cards==true) && (gameMove<115)){
+//            System.out.println("you win  "+score+" points\n");
+//        }        
+//        else if((cards==false) && (gameMove==115)){
+//            System.out.println("you loose! "+ score+" points\n");
+//        }
+//        else if((cards==true) && (gameMove<=0)){
+//            System.out.println("invalid input\n");
+//        }
+//        else if((cards==false) && (gameMove>115)){
+//            System.out.println("invalid input\n");
+//        }            
+//    }
+   
+//   public void printCells(){
+//       for (int row=0; row<board.length;row++){
+//           for (int col=0; col<board[0].length;col++){
+//                board[row][col].showCard();
+//            }
+//       System.out.println();
+//       }    
+//   } 
+
+
+//    public int getInputAsInt(){
+//        String temp = getInput.nextLine();
+//        return Integer.parseInt(temp); 
+//    }
+//
+//    public String getInputAsString(){
+//        return getInput.nextLine();
+//    }
+//    
+
+
 
 
     
