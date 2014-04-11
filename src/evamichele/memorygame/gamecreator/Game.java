@@ -170,7 +170,7 @@ public class Game implements Serializable, GetInput {
           
         System.out.print('\u000C'); // Clear the screen
         printCells();
-        matchedCards(row1, col1, row2, col2);
+        //matchedCards(row1, col1, row2, col2);
         
           }
         
@@ -190,19 +190,17 @@ public class Game implements Serializable, GetInput {
 
 }
 
-    public void matchedCards(int row1, int col1, int row2, int col2){
-    	if(board[row1][col1].back == board[row2][col2].back){
+    public void matchedCards(Card card1, Card card2){
+    	if(card1.back == card2.back){
             matched = true;
-            board[row1][col1].matched = true;
-            board[row2][col2].matched = true;
-            System.out.println("You made a match!");
-            continueGame();// cards stay flipped over for duration of the game
+            card1.matched = true;
+            card2.matched = true;
+            //continueGame();// cards stay flipped over for duration of the game
             //playGame();
         }else{
-            board[row1][col1].setShowingStatus();
-            board[row2][col2].setShowingStatus();
-            System.out.println("No match!");
-            continueGame();
+            card1.setShowing(false);
+            card2.setShowing(false);
+            //continueGame();
             //playGame();
         }
     }

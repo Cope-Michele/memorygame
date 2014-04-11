@@ -8,6 +8,7 @@ package evamichele.memorygame.frames;
 
 import evamichele.memorygame.gamecreator.Game;
 import evamichele.memorygame.gamecreator.Card;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,7 +16,10 @@ import evamichele.memorygame.gamecreator.Card;
  */
 public class GameEasyFrame extends javax.swing.JFrame {
     public Card [][] cards;
-            
+    private int prevSelectedCardRow = -1;
+    private int prevSelectedCardCol = -1;
+    private Game game;
+    
     public GameEasyFrame(Game game) {
         initComponents();
         game.GameEasy();
@@ -29,13 +33,28 @@ public class GameEasyFrame extends javax.swing.JFrame {
         card7.setText(Integer.toString(cards[2][0].getFront()));
         card8.setText(Integer.toString(cards[2][1].getFront()));
         card9.setText(Integer.toString(cards[2][2].getFront()));
-                
+        
+        this.game = game;
     }
 
     GameEasyFrame() {
         // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public void flipCard(int row, int col){
+        
+        if (prevSelectedCardRow == -1 && prevSelectedCardCol == -1){
+            prevSelectedCardRow = row;
+            prevSelectedCardCol = col;
+            cards[row][col].setShowing(true);
+        }
+        else if ( prevSelectedCardRow != -1 && prevSelectedCardCol != -1){
+            cards[row][col].setShowing(true);
+            this.game.matchedCards( cards[prevSelectedCardRow][prevSelectedCardCol], cards[row][col]);
+            prevSelectedCardRow = -1;
+            prevSelectedCardCol = -1;
+        }        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -260,40 +279,102 @@ public class GameEasyFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jNewGameMouseClicked
 
     private void card5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card5ActionPerformed
-        card5.setText(cards[1][1].getBack());
-        // card5.setText(Integer.toString(cards[1][1].getFront()));
+        flipCard(1,1);
+        
+        if ( cards[1][1].isShowing()){
+            card5.setText(cards[1][1].getBack());
+        }
+        else { 
+            card5.setText(Integer.toString(cards[1][1].getFront()));
+        }
     }//GEN-LAST:event_card5ActionPerformed
 
     private void card9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card9ActionPerformed
-        card9.setText(cards[2][2].getBack());
+        flipCard(2,2);
+        
+        if ( cards[2][2].isShowing()){
+            card9.setText(cards[2][2].getBack());
+        }
+        else { 
+            card9.setText(Integer.toString(cards[1][1].getFront()));
+        }
     }//GEN-LAST:event_card9ActionPerformed
 
     private void card1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card1ActionPerformed
-        card1.setText(cards[0][0].getBack());    
+        flipCard(0,0);
+        
+        if ( cards[0][0].isShowing()){
+            card1.setText(cards[0][0].getBack());
+        }
+        else { 
+            card1.setText(Integer.toString(cards[0][0].getFront()));
+        }
     }//GEN-LAST:event_card1ActionPerformed
 
     private void card2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card2ActionPerformed
-        card2.setText(cards[0][1].getBack());
+        flipCard(0,1);
+        
+        if ( cards[0][1].isShowing()){
+            card2.setText(cards[0][1].getBack());
+        }
+        else { 
+            card2.setText(Integer.toString(cards[0][1].getFront()));
+        }
     }//GEN-LAST:event_card2ActionPerformed
 
     private void card3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card3ActionPerformed
-        card3.setText(cards[0][2].getBack());
+        flipCard(0,2);
+        
+        if ( cards[0][2].isShowing()){
+            card3.setText(cards[0][2].getBack());
+        }
+        else { 
+            card3.setText(Integer.toString(cards[0][2].getFront()));
+        }
     }//GEN-LAST:event_card3ActionPerformed
 
     private void card4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card4ActionPerformed
-        card4.setText(cards[1][0].getBack());
+        flipCard(1,0);
+        
+        if ( cards[1][0].isShowing()){
+            card4.setText(cards[1][0].getBack());
+        }
+        else { 
+            card4.setText(Integer.toString(cards[1][0].getFront()));
+        }
     }//GEN-LAST:event_card4ActionPerformed
 
     private void card6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card6ActionPerformed
-        card6.setText(cards[1][2].getBack());
+        flipCard(1,2);
+        
+        if ( cards[1][2].isShowing()){
+            card6.setText(cards[1][2].getBack());
+        }
+        else { 
+            card6.setText(Integer.toString(cards[1][2].getFront()));
+        }
     }//GEN-LAST:event_card6ActionPerformed
 
     private void card7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card7ActionPerformed
-        card7.setText(cards[2][0].getBack());
+        flipCard(2,0);
+        
+        if ( cards[2][0].isShowing()){
+            card7.setText(cards[2][0].getBack());
+        }
+        else { 
+            card7.setText(Integer.toString(cards[2][0].getFront()));
+        }
     }//GEN-LAST:event_card7ActionPerformed
 
     private void card8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card8ActionPerformed
-        card8.setText(cards[2][1].getBack());
+        flipCard(2,1);
+        
+        if ( cards[2][1].isShowing()){
+            card8.setText(cards[2][1].getBack());
+        }
+        else { 
+            card8.setText(Integer.toString(cards[2][1].getFront()));
+        }
     }//GEN-LAST:event_card8ActionPerformed
 
     /**
