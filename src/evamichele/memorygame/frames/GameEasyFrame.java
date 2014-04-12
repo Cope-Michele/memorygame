@@ -340,9 +340,10 @@ public class GameEasyFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jHelpActionPerformed
 
     private void jNewGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNewGameMouseClicked
-      GameEasyFrame gameEasyFrame = new GameEasyFrame();
-      gameEasyFrame.setVisible(true);
-        this.dispose();         
+        Game game = new Game();
+        GameEasyFrame gameEasyFrame = new GameEasyFrame(game);
+        gameEasyFrame.setVisible(true);
+        this.dispose();        
     }//GEN-LAST:event_jNewGameMouseClicked
 
     private void card5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card5ActionPerformed

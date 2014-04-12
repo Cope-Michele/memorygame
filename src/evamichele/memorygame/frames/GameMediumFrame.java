@@ -464,9 +464,10 @@ public class GameMediumFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jHelpActionPerformed
 
     private void jNewGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNewGameMouseClicked
-      GameMediumFrame gameMediumFrame = new GameMediumFrame();
-      gameMediumFrame.setVisible(true);
-        this.dispose(); 
+      Game game = new Game();
+        GameMediumFrame gameMediumFrame = new GameMediumFrame(game);
+        gameMediumFrame.setVisible(true);
+        this.dispose();  
     }//GEN-LAST:event_jNewGameMouseClicked
 
     private void card2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_card2ActionPerformed

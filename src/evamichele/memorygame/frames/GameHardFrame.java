@@ -1000,9 +1000,10 @@ public class GameHardFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jHelpActionPerformed
 
     private void jNewGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jNewGameMouseClicked
-        GameHardFrame gameHardFrame = new GameHardFrame();
+        Game game = new Game();
+        GameHardFrame gameHardFrame = new GameHardFrame(game);
         gameHardFrame.setVisible(true);
-        this.dispose();
+        this.dispose(); 
     }//GEN-LAST:event_jNewGameMouseClicked
 
     /**
